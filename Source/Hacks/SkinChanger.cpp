@@ -10,7 +10,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-#include "../imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include "../Interfaces.h"
 #include "../Config.h"
