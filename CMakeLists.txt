@@ -44,5 +44,6 @@ else()
   target_compile_options(OsirisOBJ PRIVATE /utf-8)
 endif()
 
-add_library(Osiris SHARED $<TARGET_OBJECTS:OsirisOBJ> "${CMAKE_SOURCE_DIR}/Osiris/Osiris.cpp")
+add_library(Osiris SHARED "${CMAKE_SOURCE_DIR}/Osiris/Osiris.cpp")
+target_link_libraries(Osiris PRIVATE OsirisOBJ)
 target_link_options(Osiris PRIVATE -flto)
