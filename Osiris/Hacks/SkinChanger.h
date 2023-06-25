@@ -59,6 +59,7 @@ namespace SkinChanger
 
     ImTextureID getItemIconTexture(const std::string& iconpath) noexcept;
     void clearItemIconTextures() noexcept;
+    void clearUnusedItemIconTextures() noexcept;
 
     void fixKnifeAnimation(Entity* viewModelWeapon, long& sequence) noexcept;
 
