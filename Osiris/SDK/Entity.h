@@ -2,7 +2,6 @@
 
 #include <functional>
 
-#include "../Config.h"
 #include "../Interfaces.h"
 #include "../Memory.h"
 #include "../Netvars.h"
