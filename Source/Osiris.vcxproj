@@ -208,6 +208,7 @@
 	<ClInclude Include="..\Dependencies\imgui\imstb_rectpack.h" />
 	<ClInclude Include="..\Dependencies\imgui\imstb_textedit.h" />
 	<ClInclude Include="..\Dependencies\imgui\imstb_truetype.h" />
+	<ClInclude Include="..\Dependencies\nlohmann\json.hpp" />
 	<ClInclude Include="..\Dependencies\MinHook\buffer.h" />
 	<ClInclude Include="..\Dependencies\MinHook\hde\hde32.h" />
 	<ClInclude Include="..\Dependencies\MinHook\hde\hde64.h" />
@@ -251,7 +252,6 @@
     <ClInclude Include="InputUtil.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Netvars.h" />
-    <ClInclude Include="nlohmann\json.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resources\avatar_ct.h" />
     <ClInclude Include="Resources\avatar_tt.h" />
