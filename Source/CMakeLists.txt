@@ -16,7 +16,3 @@ target_sources(OsirisOBJ PRIVATE
 add_subdirectory(Hacks)
 add_subdirectory(Hooks)
 add_subdirectory(SDK)
-
-if (WIN32)
-  add_subdirectory(MinHook)
-endif()
