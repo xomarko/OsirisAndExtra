@@ -62,12 +62,12 @@ void ImGuiCustom::colorPicker(const char* name, float color[3], float* alpha, bo
 
                 if (rounding) {
                     ImGui::DragFloat("##rounding", rounding, 0.1f, 0.0f, 100.0f, "Corner %.1f");
-                    *rounding = std::max(*rounding, 0.0f);
+                    *rounding = (std::max)(*rounding, 0.0f);
                 }
 
                 if (thickness) {
                     ImGui::DragFloat("##thickness", thickness, 0.1f, 1.0f, 10.0f, "Thick %.2f");
-                    *thickness = std::max(*thickness, 1.0f);
+                    *thickness = (std::max)(*thickness, 1.0f);
                 }
 
                 if (outline)
