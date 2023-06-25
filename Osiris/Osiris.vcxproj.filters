@@ -681,7 +681,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="default_vs.hlsl">
+    <FxCompile Include="Resources\Shaders\default_vs.hlsl">
       <Filter>Resources\Shaders</Filter>
     </FxCompile>
   </ItemGroup>
