@@ -13,7 +13,7 @@
 #include "Resources/avatar_tt.h"
 #include "Resources/skillgroups.h"
 
-#include "stb_image.h"
+#include <stb_image.h>
 
 #include "SDK/ClientClass.h"
 #include "SDK/Engine.h"
