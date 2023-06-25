@@ -2346,10 +2346,10 @@ void Hovered() { ImGuiStyle* Style = &ImGui::GetStyle(); Style->Colors[ImGuiCol_
 void GUI::renderGuiStyle() noexcept
 {
     ImGuiStyle* Style = &ImGui::GetStyle();
-    Style->WindowRounding = 5.5;
-    Style->WindowBorderSize = 2.5;
-    Style->ChildRounding = 5.5;
-    Style->FrameBorderSize = 2.5;
+    Style->WindowRounding = 0;
+    Style->WindowBorderSize = 0;
+    Style->ChildRounding = 0;
+    Style->FrameBorderSize = 0;
     Style->Colors[ImGuiCol_WindowBg] = ImColor(0, 0, 0, 0);
     Style->Colors[ImGuiCol_ChildBg] = ImColor(31, 31 ,31);
     Style->Colors[ImGuiCol_Button] = ImColor(25, 30, 34);
