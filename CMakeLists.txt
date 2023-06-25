@@ -30,7 +30,7 @@ set_target_properties(OsirisOBJ PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_include_directories(OsirisOBJ PRIVATE ${SDL2_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
 target_link_libraries(OsirisOBJ PRIVATE SDL2 GL ${CMAKE_DL_LIBS} Freetype::Freetype)
 target_compile_options(OsirisOBJ PRIVATE -flto)
-target_link_options(OsirisOBJ PUBLIC -flto)
+target_link_options(OsirisOBJ PUBLIC -flto LINKER:--no-undefined)
 
 add_library(Osiris SHARED $<TARGET_OBJECTS:OsirisOBJ> "${CMAKE_SOURCE_DIR}/Osiris/Osiris.cpp")
 target_link_options(Osiris PRIVATE -flto)
