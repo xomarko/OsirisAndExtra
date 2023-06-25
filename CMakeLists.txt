@@ -25,7 +25,6 @@ target_include_directories(OsirisOBJ PUBLIC "${CMAKE_SOURCE_DIR}/Source")
 target_include_directories(OsirisOBJ PUBLIC "${CMAKE_SOURCE_DIR}/Dependencies")
 
 add_subdirectory(Source/freetype)
-target_link_libraries(OsirisOBJ PUBLIC imgui)
 
 if (NOT WIN32)
   target_compile_options(OsirisOBJ PRIVATE -flto)
