@@ -1,0 +1,22 @@
+target_sources(OsirisOBJ PRIVATE
+  AimbotFunctions.cpp
+  Animations.cpp
+  AntiAim.cpp
+  Backtrack.cpp
+  Chams.cpp
+  EnginePrediction.cpp
+  Fakelag.cpp
+  Glow.cpp
+  GrenadePrediction.cpp
+  Knifebot.cpp
+  Legitbot.cpp
+  Misc.cpp
+  Ragebot.cpp
+  Resolver.cpp
+  SkinChanger.cpp
+  Sound.cpp
+  StreamProofESP.cpp
+  Tickbase.cpp
+  Triggerbot.cpp
+  Visuals.cpp
+)
