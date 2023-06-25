@@ -47,6 +47,7 @@ else()
 endif()
 
 target_sources(OsirisOBJ PRIVATE
+  AntiDetection.cpp
   Config.cpp
   EventListener.cpp
   GameData.cpp
