@@ -36,9 +36,6 @@
     <Filter Include="Resources\Shaders">
       <UniqueIdentifier>{f1259fc9-6ace-40e5-b18d-67bedc9c6522}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hacks\Aimbot">
-      <UniqueIdentifier>{a7f6f681-de5a-49a7-96c2-46e27d78458c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI.cpp">
@@ -66,6 +63,9 @@
       <Filter>Hacks</Filter>
     </ClCompile>
     <ClCompile Include="Hacks\Chams.cpp">
+      <Filter>Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacks\AimbotFunctions.cpp">
       <Filter>Hacks</Filter>
     </ClCompile>
     <ClCompile Include="Netvars.cpp">
@@ -272,9 +272,6 @@
     <ClCompile Include="AntiDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Hacks\AimbotFunctions.cpp">
-      <Filter>Hacks\Aimbot</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h">
@@ -339,6 +336,9 @@
     </ClInclude>
     <ClInclude Include="SDK\RenderView.h">
       <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacks\AimbotFunctions.h">
+      <Filter>Hacks</Filter>
     </ClInclude>
     <ClInclude Include="SDK\Entity.h">
       <Filter>SDK</Filter>
@@ -687,9 +687,6 @@
     </ClInclude>
     <ClInclude Include="AntiDetection.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hacks\AimbotFunctions.h">
-      <Filter>Hacks\Aimbot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
