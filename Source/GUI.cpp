@@ -2263,37 +2263,6 @@ void GUI::renderConfigWindow() noexcept
         if (ImGui::Button("Create config", { 100.0f, 25.0f }))
             config->add(buffer.c_str());
 
-        if (ImGui::Button("Reset config", { 100.0f, 25.0f }))
-            ImGui::OpenPopup("Config to reset");
-
-        if (ImGui::BeginPopup("Config to reset")) {
-            static constexpr const char* names[]{ "Whole", "Legitbot", "Legit Anti Aim", "Ragebot", "Rage Anti aim", "Fake angle", "Fakelag", "Backtrack", "Triggerbot", "Glow", "Chams", "ESP", "Visuals", "Skin changer", "Sound", "Misc" };
-            for (int i = 0; i < IM_ARRAYSIZE(names); i++) {
-                if (i == 1) ImGui::Separator();
-
-                if (ImGui::Selectable(names[i])) {
-                    switch (i) {
-                    case 0: config->reset(); Misc::updateClanTag(true); SkinChanger::scheduleHudUpdate(); break;
-                    case 1: config->legitbot = { }; config->legitbotKey.reset(); break;
-                    case 2: config->legitAntiAim = { }; break;
-                    case 3: config->ragebot = { }; config->ragebotKey.reset();  break;
-                    case 4: config->rageAntiAim = { };  break;
-                    case 5: config->fakeAngle = { }; break;
-                    case 6: config->fakelag = { }; break;
-                    case 7: config->backtrack = { }; break;
-                    case 8: config->triggerbot = { }; config->triggerbotKey.reset(); break;
-                    case 9: Glow::resetConfig(); break;
-                    case 10: config->chams = { }; config->chamsKey.reset(); break;
-                    case 11: config->streamProofESP = { }; break;
-                    case 12: config->visuals = { }; break;
-                    case 13: config->skinChanger = { }; SkinChanger::scheduleHudUpdate(); break;
-                    case 14: Sound::resetConfig(); break;
-                    case 15: config->misc = { };  Misc::updateClanTag(true); break;
-                    }
-                }
-            }
-            ImGui::EndPopup();
-        }
         if (currentConfig != -1) {
             if (ImGui::Button("Load selected", { 100.0f, 25.0f })) {
                 config->load(currentConfig, incrementalLoad);
