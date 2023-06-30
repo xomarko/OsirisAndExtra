@@ -1,6 +1,5 @@
 # Osiris And Extra
 
-[![Windows](https://img.shields.io/badge/platform-Windows-0078d7.svg?style=plastic)](https://en.wikipedia.org/wiki/Microsoft_Windows) 
 [![CS:GO](https://img.shields.io/badge/game-CS%3AGO-orange.svg?style=plastic)](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) 
 [![Pull Requests](https://img.shields.io/github/issues-pr/notgoodusename/OsirisAndExtra.svg?style=plastic&color=brightgreen)](https://github.com/notgoodusename/OsirisAndExtra/pulls)
 [![Issues](https://img.shields.io/github/issues/notgoodusename/OsirisAndExtra.svg?style=plastic)](https://github.com/notgoodusename/OsirisAndExtra/issues)
@@ -74,17 +73,19 @@ If your CPU supports AVX / AVX2 / AVX-512 instruction set, you can enable it in 
 
 ## FAQ
 
-### How do I open menu?
+### How do I open the menu?
 Press <kbd>INSERT</kbd> while focused on CS:GO window.
 
-### Where is my config file saved?
+### Where are my configs saved?
 Configuration files are saved inside `Osiris` folder in your `Documents` folder (`%USERPROFILE%\Documents\Osiris`). The config is in human readable format and can be edited (e.g, using notepad). Sometimes after updates configuration file needs to be deleted and recreated.
 
-### What hooking methods OsirisAndExtra uses?
+### What hooking methods does OsirisAndExtra use?
 Currently implemented hooking methods are:
 *   MinHook - trampoline hook
 *   VmtHook - hook a function directly in a vtable
 *   VmtSwap - create a copy of a vtable and swap the pointer on the class instance
+
+Hooking implementation files are located in [Hooks](Source/Hooks) directory.
 
 ## Acknowledgments
 
