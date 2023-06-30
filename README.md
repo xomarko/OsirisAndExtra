@@ -1,17 +1,16 @@
 # Osiris And Extra
 
+[![Windows](https://img.shields.io/badge/platform-Windows-0078d7.svg?style=plastic)](https://en.wikipedia.org/wiki/Microsoft_Windows) 
 [![CS:GO](https://img.shields.io/badge/game-CS%3AGO-orange.svg?style=plastic)](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) 
 [![Pull Requests](https://img.shields.io/github/issues-pr/notgoodusename/OsirisAndExtra.svg?style=plastic&color=brightgreen)](https://github.com/notgoodusename/OsirisAndExtra/pulls)
 [![Issues](https://img.shields.io/github/issues/notgoodusename/OsirisAndExtra.svg?style=plastic)](https://github.com/notgoodusename/OsirisAndExtra/issues)
 [![License](https://img.shields.io/github/license/notgoodusename/OsirisAndExtra.svg?style=plastic&color=blueviolet)](LICENSE)
 
-## Use a VAC bypass or you WILL get banned
-
 A Free open-source cheat for **Counter-Strike: Global Offensive**, Based on [Osiris](https://github.com/danielkrupinski/Osiris). Designed as an internal cheat -  [Dynamic-link library](https://en.wikipedia.org/wiki/Dynamic-link_library) (DLL) loadable into the game process. Compatible with the Steam version of the game. Sadly Only Available for Windows.
 
 ## Features 
 * **Aimbot** - aim assistance 
-* **Anti-Aim** -  a tool to make you harder to hit, sometimes exploiting `Fake angles`
+* **Anti-Aim** -  a tool that makes you harder to hit
 * **Fake angles** - makes your body appear somewhere it's not
 * **Triggerbot** - automatically fires when crosshair is on enemy 
 * **Backtrack** - abuse lag compensation to move players back in time 
