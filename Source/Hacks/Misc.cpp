@@ -1202,8 +1202,6 @@ void Misc::autoPeek(UserCmd* cmd, Vector currentViewAngles) noexcept
             {
                 hasShot = false;
                 peekPosition = Vector{};
-                if (config->misc.autoPeekKey.keyMode == KeyMode::Toggle)
-                    config->misc.autoPeekKey.setToggleTo(false);
             }
         }
     }
