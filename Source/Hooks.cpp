@@ -138,7 +138,6 @@ static HRESULT __stdcall present(IDirect3DDevice9* device, const RECT* src, cons
         StreamProofESP::updateInput();
         Misc::updateInput();
         Triggerbot::updateInput();
-        Glow::updateInput();
         Ragebot::updateInput();
         AntiAim::updateInput();
         Tickbase::updateInput();

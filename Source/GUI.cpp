@@ -806,9 +806,6 @@ void GUI::renderChamsWindow() noexcept
 
 void GUI::renderGlowWindow() noexcept
 {
-    ImGui::hotkey2("Key", config->glowKey, 80.0f);
-    ImGui::Separator();
-
     static int currentCategory{ 0 };
     ImGui::PushItemWidth(110.0f);
     ImGui::PushID(0);

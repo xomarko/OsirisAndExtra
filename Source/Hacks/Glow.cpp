@@ -27,9 +27,6 @@ void Glow::render() noexcept
 
     Glow::clearCustomObjects();
 
-    if (!config->glowKey.isActive())
-        return;
-
     const auto highestEntityIndex = interfaces->entityList->getHighestEntityIndex();
     for (int i = interfaces->engine->getMaxClients() + 1; i <= highestEntityIndex; ++i) {
         const auto entity = interfaces->entityList->getEntity(i);
@@ -143,14 +140,8 @@ void Glow::clearCustomObjects() noexcept
     customGlowEntities.clear();
 }
 
-void Glow::updateInput() noexcept
-{
-    config->glowKey.handleToggle();
-}
-
 void Glow::resetConfig() noexcept
 {
     config->glow = {};
     config->playerGlow = {};
-    config->glowKey.reset();
 }
