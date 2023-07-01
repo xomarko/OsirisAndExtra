@@ -390,7 +390,6 @@ static void from_json(const json& j, Config::PlayerGlow& g)
 
 static void from_json(const json& j, Config::StreamProofESP& e)
 {
-    read(j, "Key", e.key);
     read(j, "Allies", e.allies);
     read(j, "Enemies", e.enemies);
     read(j, "Weapons", e.weapons);
@@ -1064,7 +1063,6 @@ static void to_json(json& j, const  Config::PlayerGlow& o, const  Config::Player
 
 static void to_json(json& j, const Config::StreamProofESP& o, const Config::StreamProofESP& dummy = {})
 {
-    WRITE("Key", key);
     j["Allies"] = o.allies;
     j["Enemies"] = o.enemies;
     j["Weapons"] = o.weapons;

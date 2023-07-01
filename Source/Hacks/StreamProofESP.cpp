@@ -526,9 +526,6 @@ static void renderProjectileEsp(const ProjectileData& projectileData, const Proj
 
 void StreamProofESP::render() noexcept
 {
-    if (!config->streamProofESP.key.isActive())
-        return;
-
     drawList = ImGui::GetBackgroundDrawList();
 
     GameData::Lock lock;
@@ -556,9 +553,4 @@ void StreamProofESP::render() noexcept
         if (!renderPlayerEsp(player, playerConfig["All"]))
             renderPlayerEsp(player, playerConfig[player.visible ? "Visible" : "Occluded"]);
     }
-}
-
-void StreamProofESP::updateInput() noexcept
-{
-    config->streamProofESP.key.handleToggle();
 }

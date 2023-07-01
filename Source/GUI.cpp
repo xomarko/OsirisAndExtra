@@ -848,9 +848,6 @@ void GUI::renderGlowWindow() noexcept
 
 void GUI::renderStreamProofESPWindow() noexcept
 {
-    ImGui::hotkey2("Key", config->streamProofESP.key, 80.0f);
-    ImGui::Separator();
-
     static std::size_t currentCategory;
     static auto currentItem = "All";
 

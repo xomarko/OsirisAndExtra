@@ -186,8 +186,6 @@ public:
     std::unordered_map<std::string, GlowItem> glow;
 
     struct StreamProofESP {
-        KeyBind key{ std::string("esp") };
-
         std::unordered_map<std::string, Player> allies;
         std::unordered_map<std::string, Player> enemies;
         std::unordered_map<std::string, Weapon> weapons;
