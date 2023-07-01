@@ -171,7 +171,6 @@ public:
     };
 
     std::unordered_map<std::string, Chams> chams;
-    KeyBind chamsKey{ std::string("chams") };
 
     struct GlowItem : Color4 {
         bool enabled = false;

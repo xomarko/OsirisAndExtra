@@ -113,16 +113,8 @@ static void initializeMaterials() noexcept
     }
 }
 
-void Chams::updateInput() noexcept
-{
-    config->chamsKey.handleToggle();
-}
-
 bool Chams::render(void* ctx, void* state, const ModelRenderInfo& info, matrix3x4* customBoneToWorld) noexcept
 {
-    if (!config->chamsKey.isActive())
-        return false;
-
     static bool materialsInitialized = false;
     if (!materialsInitialized) {
         initializeMaterials();

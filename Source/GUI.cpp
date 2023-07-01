@@ -756,8 +756,6 @@ void GUI::renderChamsWindow() noexcept
 {
     ImGui::Columns(2, nullptr, false);
     ImGui::SetColumnOffset(1, 300.0f);
-    ImGui::hotkey2("Key", config->chamsKey, 80.0f);
-    ImGui::Separator();
 
     static int currentCategory{ 0 };
     ImGui::PushItemWidth(110.0f);

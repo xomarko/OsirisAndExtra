@@ -1433,7 +1433,6 @@ const bool anyActiveKeybinds() noexcept
     const bool legitBot = config->legitbotKey.canShowKeybind();
     const bool triggerBot = config->triggerbotKey.canShowKeybind();
     const bool glow = config->glowKey.canShowKeybind();
-    const bool chams = config->chamsKey.canShowKeybind();
     const bool esp = config->streamProofESP.key.canShowKeybind();
 
     const bool zoom = config->visuals.zoom && config->visuals.zoomKey.canShowKeybind();
@@ -1453,7 +1452,7 @@ const bool anyActiveKeybinds() noexcept
 
     return rageBot || minDamageOverride || fakeAngle || antiAimManualForward || antiAimManualBackward || antiAimManualRight  || antiAimManualLeft 
         || doubletap || hideshots
-        || legitAntiAim || legitBot || triggerBot || chams || glow || esp
+        || legitAntiAim || legitBot || triggerBot || glow || esp
         || zoom || thirdperson || freeCam || blockbot || edgejump || minijump || jumpBug || edgebug || autoPixelSurf || slowwalk || fakeduck || autoPeek || prepareRevolver;
 }
 
@@ -1504,7 +1503,6 @@ void Misc::showKeybinds() noexcept
 
     config->legitbotKey.showKeybind();
     config->triggerbotKey.showKeybind();
-    config->chamsKey.showKeybind();
     config->glowKey.showKeybind();
     config->streamProofESP.key.showKeybind();
 

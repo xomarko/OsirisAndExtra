@@ -813,7 +813,6 @@ void Config::load(const char8_t* name, bool incremental) noexcept
     read(j["Glow"], "Key", glowKey);
 
     read(j, "Chams", chams);
-    read(j["Chams"], "Key", chamsKey);
     read<value_t::object>(j, "ESP", streamProofESP);
     read<value_t::object>(j, "Visuals", visuals);
     read(j, "Skin changer", skinChanger);
@@ -1583,7 +1582,6 @@ void Config::save(size_t id) const noexcept
         to_json(j["Glow"]["Key"], glowKey, KeyBind::NONE);
 
         j["Chams"] = chams;
-        to_json(j["Chams"]["Key"], chamsKey, KeyBind::NONE);
         j["ESP"] = streamProofESP;
         j["Sound"] = ::Sound::toJson();
         j["Visuals"] = visuals;
