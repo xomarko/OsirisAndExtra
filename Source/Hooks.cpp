@@ -352,7 +352,6 @@ static bool __stdcall createMove(float inputSampleTime, UserCmd* cmd, bool& send
     memory->globalVars->serverTime(cmd);
     Misc::antiAfkKick(cmd);
     Misc::fastStop(cmd);
-    Misc::prepareRevolver(cmd);
     Visuals::removeShadows();
     Visuals::fullBright();
     Visuals::shadowChanger();
@@ -423,6 +422,8 @@ static bool __stdcall createMove(float inputSampleTime, UserCmd* cmd, bool& send
     cmd->forwardmove = std::clamp(cmd->forwardmove, -450.0f, 450.0f);
     cmd->sidemove = std::clamp(cmd->sidemove, -450.0f, 450.0f);
     cmd->upmove = std::clamp(cmd->upmove, -320.0f, 320.0f);
+
+    Misc::prepareRevolver(cmd);
 
     previousViewAngles = cmd->viewangles;
 
