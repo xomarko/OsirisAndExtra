@@ -401,7 +401,6 @@ public:
 
         struct KeyBindList {
             bool enabled = false;
-            bool noTitleBar = false;
             ImVec2 pos;
         };
 

@@ -529,7 +529,6 @@ static void from_json(const json& j, Config::Misc::SpectatorList& sl)
 static void from_json(const json& j, Config::Misc::KeyBindList& sl)
 {
     read(j, "Enabled", sl.enabled);
-    read(j, "No Title Bar", sl.noTitleBar);
     read<value_t::object>(j, "Pos", sl.pos);
 }
 
@@ -1165,7 +1164,6 @@ static void to_json(json& j, const Config::Misc::SpectatorList& o, const Config:
 static void to_json(json& j, const Config::Misc::KeyBindList& o, const Config::Misc::KeyBindList& dummy = {})
 {
     WRITE("Enabled", enabled);
-    WRITE("No Title Bar", noTitleBar);
 
     if (const auto window = ImGui::FindWindowByName("Keybind list")) {
         j["Pos"] = window->Pos;

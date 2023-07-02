@@ -1808,19 +1808,7 @@ void GUI::renderMiscWindow() noexcept
     ImGui::Checkbox("Reveal suspect", &config->misc.revealSuspect);
     ImGui::Checkbox("Reveal votes", &config->misc.revealVotes);
     ImGui::Checkbox("Spectator list", &config->misc.spectatorList.enabled);
-
     ImGui::Checkbox("Keybinds list", &config->misc.keybindList.enabled);
-    ImGui::SameLine();
-
-    ImGui::PushID("Keybinds list");
-    if (ImGui::Button("..."))
-        ImGui::OpenPopup("");
-
-    if (ImGui::BeginPopup("")) {
-        ImGui::Checkbox("No Title Bar", &config->misc.keybindList.noTitleBar);
-        ImGui::EndPopup();
-    }
-    ImGui::PopID();
 
     ImGui::PushID("Player List");
     ImGui::Checkbox("Player List", &config->misc.playerList.enabled);

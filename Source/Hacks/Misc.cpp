@@ -1472,9 +1472,6 @@ void Misc::showKeybinds() noexcept
     if (!gui->isOpen())
         windowFlags |= ImGuiWindowFlags_NoInputs;
 
-    if (config->misc.keybindList.noTitleBar)
-        windowFlags |= ImGuiWindowFlags_NoTitleBar;
-
     ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, { 0.5f, 0.5f });
     ImGui::Begin("Keybind list", nullptr, windowFlags);
     ImGui::PopStyleVar();
