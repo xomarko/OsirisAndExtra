@@ -394,7 +394,6 @@ public:
 
         struct SpectatorList {
             bool enabled = false;
-            bool noTitleBar = false;
             ImVec2 pos;
         };
 

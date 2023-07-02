@@ -523,7 +523,6 @@ static void from_json(const json& j, PurchaseList& pl)
 static void from_json(const json& j, Config::Misc::SpectatorList& sl)
 {
     read(j, "Enabled", sl.enabled);
-    read(j, "No Title Bar", sl.noTitleBar);
     read<value_t::object>(j, "Pos", sl.pos);
 }
 
@@ -1157,7 +1156,6 @@ static void to_json(json& j, const PurchaseList& o, const PurchaseList& dummy = 
 static void to_json(json& j, const Config::Misc::SpectatorList& o, const Config::Misc::SpectatorList& dummy = {})
 {
     WRITE("Enabled", enabled);
-    WRITE("No Title Bar", noTitleBar);
 
     if (const auto window = ImGui::FindWindowByName("Spectator list")) {
         j["Pos"] = window->Pos;

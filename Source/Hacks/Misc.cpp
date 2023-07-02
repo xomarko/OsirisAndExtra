@@ -1557,9 +1557,6 @@ void Misc::spectatorList() noexcept
     if (!gui->isOpen())
         windowFlags |= ImGuiWindowFlags_NoInputs;
 
-    if (config->misc.spectatorList.noTitleBar)
-        windowFlags |= ImGuiWindowFlags_NoTitleBar;
-
     ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, { 0.5f, 0.5f });
     ImGui::Begin("Spectator list", nullptr, windowFlags);
     ImGui::PopStyleVar();
