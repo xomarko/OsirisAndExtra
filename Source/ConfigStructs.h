@@ -206,6 +206,23 @@ enum class Yaw {
     spin
 };
 
+const char* chamsMaterial[] =
+{
+    "Normal",
+    "Flat",
+    "Animated",
+    "Platinum",
+    "Glass",
+    "Chrome",
+    "Crystal",
+    "Silver",
+    "Gold",
+    "Plastic",
+    "Glow",
+    "Pearlescent",
+    "Metallic"
+};
+
 using json = nlohmann::basic_json<std::map, std::vector, std::string, bool, std::int64_t, std::uint64_t, float>;
 using value_t = json::value_t;
 
