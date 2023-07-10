@@ -763,7 +763,7 @@ void GUI::renderChamsWindow() noexcept
 
     static int material = 1;
 
-    if (ImGui::Combo("", &currentCategory, "Allies\0Enemies\0Planting\0Defusing\0Local player\0Weapons\0Hands\0Backtrack\0Sleeves\0Desync\0Ragdolls\0Fake lag\0"))
+    if (ImGui::Combo("", &currentCategory, chamsCategory, ARRAYSIZE(chamsCategory)))
         material = 1;
 
     ImGui::PopID();
@@ -778,18 +778,17 @@ void GUI::renderChamsWindow() noexcept
     ImGui::SameLine();
     ImGui::Text("%d", material);
 
-    constexpr std::array categories{ "Allies", "Enemies", "Planting", "Defusing", "Local player", "Weapons", "Hands", "Backtrack", "Sleeves", "Desync", "Ragdolls", "Fake lag"};
 
     ImGui::SameLine();
 
-    if (material >= int(config->chams[categories[currentCategory]].materials.size()))
+    if (material >= int(config->chams[chamsCategory[currentCategory]].materials.size()))
         ImGuiCustom::arrowButtonDisabled("##right", ImGuiDir_Right);
     else if (ImGui::ArrowButton("##right", ImGuiDir_Right))
         ++material;
 
     ImGui::SameLine();
 
-    auto& chams{ config->chams[categories[currentCategory]].materials[material - 1] };
+    auto& chams{ config->chams[chamsCategory[currentCategory]].materials[material - 1] };
 
     ImGui::Checkbox("Enabled", &chams.enabled);
     ImGui::Separator();

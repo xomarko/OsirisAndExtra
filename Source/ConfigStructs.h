@@ -223,6 +223,22 @@ const char* chamsMaterial[] =
     "Metallic"
 };
 
+const char* chamsCategory[] =
+{
+    "Allies",
+    "Enemies",
+    "Planting",
+    "Defusing",
+    "Local player",
+    "Weapons",
+    "Hands",
+    "Backtrack",
+    "Sleeves",
+    "Desync",
+    "Ragdolls",
+    "Fake lag"
+};
+
 using json = nlohmann::basic_json<std::map, std::vector, std::string, bool, std::int64_t, std::uint64_t, float>;
 using value_t = json::value_t;
 
