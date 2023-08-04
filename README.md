@@ -4,7 +4,7 @@
 [![CS:GO](https://img.shields.io/badge/game-CS%3AGO-orange.svg?style=plastic)](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) 
 [![Pull Requests](https://img.shields.io/github/issues-pr/notgoodusename/OsirisAndExtra.svg?style=plastic&color=brightgreen)](https://github.com/notgoodusename/OsirisAndExtra/pulls)
 [![Issues](https://img.shields.io/github/issues/notgoodusename/OsirisAndExtra.svg?style=plastic)](https://github.com/notgoodusename/OsirisAndExtra/issues)
-[![License](https://img.shields.io/github/license/notgoodusename/OsirisAndExtra.svg?style=plastic&color=blueviolet)](LICENSE)
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 A Free open-source cheat for **Counter-Strike: Global Offensive**, Based on [Osiris](https://github.com/danielkrupinski/Osiris). Designed as an internal cheat -  [Dynamic-link library](https://en.wikipedia.org/wiki/Dynamic-link_library) (DLL) loadable into the game process. Compatible with the Steam version of the game. Sadly Only Available for Windows.
 
@@ -54,12 +54,7 @@ When you have equipped a copy of the source code, next step is opening **Osiris.
 
 Then change build configuration to `Release | x86` and simply press **Build solution**.
 
-If everything went right you should receive `Osiris.dll`  binary file.
-
-### Or downloading the DLL
-
-Or you could download the DLL by [clicking here](https://github.com/notgoodusename/OsirisAndExtra/releases/latest/download/Osiris.dll).
-Not preferable to download the DLL because it's old.
+If everything went right you should receive the `Osiris.dll`  binary file.
 
 ### Loading / Injecting into game process
 
@@ -93,9 +88,14 @@ Hooking implementation files are located in [Hooks](Source/Hooks) directory.
 
 ## License
 
-> Copyright © 2018-2022 Daniel Krupiński
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php) - see the [LICENSE](https://github.com/notgoodusename/OsirisAndExtra/blob/main/LICENSE) file for details.
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 ## Also see
 
