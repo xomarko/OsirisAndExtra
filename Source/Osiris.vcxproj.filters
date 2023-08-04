@@ -36,6 +36,9 @@
     <Filter Include="Resources\Shaders">
       <UniqueIdentifier>{f1259fc9-6ace-40e5-b18d-67bedc9c6522}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SDK\Constants">
+      <UniqueIdentifier>{8be3d1dd-f7e9-40b3-93ad-3567482d988a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI.cpp">
@@ -344,9 +347,6 @@
       <Filter>Hacks</Filter>
     </ClInclude>
     <ClInclude Include="SDK\Entity.h">
-      <Filter>SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="SDK\ClassId.h">
       <Filter>SDK</Filter>
     </ClInclude>
     <ClInclude Include="SDK\EntityList.h">
@@ -690,6 +690,9 @@
     </ClInclude>
     <ClInclude Include="AntiDetection.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Constants\ClassId.h">
+      <Filter>SDK\Constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

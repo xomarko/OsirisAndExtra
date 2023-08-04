@@ -41,7 +41,7 @@
 #include "Hacks/Triggerbot.h"
 #include "Hacks/Visuals.h"
 
-#include "SDK/ClassId.h"
+#include "SDK/Constants/ClassId.h"
 #include "SDK/Client.h"
 #include "SDK/ClientState.h"
 #include "SDK/ConVar.h"
