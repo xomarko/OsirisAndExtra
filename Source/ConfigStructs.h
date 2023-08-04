@@ -35,8 +35,14 @@ struct ColorToggle3 : private Color3 {
     const Color3& asColor3() const noexcept { return static_cast<const Color3&>(*this); }
 };
 
-struct ColorToggle : Color4 {
+struct ColorToggle : private Color4 {
+    ColorToggle() = default;
+    ColorToggle(float r, float g, float b, float a) : Color4{ { r, g, b, a } } {}
+
     bool enabled = false;
+
+    Color4& asColor4() noexcept { return static_cast<Color4&>(*this); }
+    const Color4& asColor4() const noexcept { return static_cast<const Color4&>(*this); }
 };
 
 struct ColorToggleOutline : ColorToggle {
@@ -108,7 +114,7 @@ struct Player : Shared {
     Player() : Shared{}
     {
         box.type = Box::_2d;
-        healthBar.color = { 0.0f, 1.0f, 0.0f, 1.0f };
+        healthBar.asColor4().color = { 0.0f, 1.0f, 0.0f, 1.0f };
     }
 
     ColorToggle weapon;
@@ -185,7 +191,7 @@ struct KillfeedChanger {
 };
 
 struct OffscreenEnemies : ColorToggle {
-    OffscreenEnemies() : ColorToggle{ { 1.0f, 0.26f, 0.21f, 1.0f } } {}
+    OffscreenEnemies() : ColorToggle{ 1.0f, 0.26f, 0.21f, 1.0f } {}
     HealthBar healthBar;
 };
 
@@ -200,7 +206,7 @@ struct AutoBuy {
 };
 
 struct BulletTracers : ColorToggle {
-    BulletTracers() : ColorToggle{ { 0.0f, 0.75f, 1.0f, 1.0f } } {}
+    BulletTracers() : ColorToggle{ 0.0f, 0.75f, 1.0f, 1.0f } {}
 };
 
 enum class Yaw {
@@ -285,7 +291,7 @@ static void to_json(json& j, const KeyBind& o, const KeyBind& dummy)
 
 static void to_json(json& j, const ColorToggle& o, const ColorToggle& dummy = {})
 {
-    to_json(j, static_cast<const Color4&>(o), dummy);
+    to_json(j, o.asColor4(), dummy.asColor4());
     WRITE("Enabled", enabled);
 }
 
@@ -455,7 +461,7 @@ static void from_json(const json& j, Color4& c)
 
 static void from_json(const json& j, ColorToggle& ct)
 {
-    from_json(j, static_cast<Color4&>(ct));
+    from_json(j, ct.asColor4());
     read(j, "Enabled", ct.enabled);
 }
 

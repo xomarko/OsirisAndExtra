@@ -184,7 +184,7 @@ void Misc::drawVelocity(ImDrawList* drawList) noexcept
     const bool shouldDrawTakeOff = !onGround || (takeOffTime > memory->globalVars->realtime);
     const std::string finalText = std::to_string(velocity);
 
-    const Color4 trueColor = config->misc.velocity.color.enabled ? Color4{ config->misc.velocity.color.color[0], config->misc.velocity.color.color[1], config->misc.velocity.color.color[2], config->misc.velocity.alpha, config->misc.velocity.color.rainbowSpeed, config->misc.velocity.color.rainbow }
+    const Color4 trueColor = config->misc.velocity.color.enabled ? Color4{ config->misc.velocity.color.asColor4().color[0], config->misc.velocity.color.asColor4().color[1], config->misc.velocity.color.asColor4().color[2], config->misc.velocity.alpha, config->misc.velocity.color.asColor4().rainbowSpeed, config->misc.velocity.color.asColor4().rainbow }
         : (velocity == lastVelocity ? Color4{ 1.0f, 0.78f, 0.34f, config->misc.velocity.alpha } : velocity < lastVelocity ? Color4{ 1.0f, 0.46f, 0.46f, config->misc.velocity.alpha } : Color4{ 0.11f, 1.0f, 0.42f, config->misc.velocity.alpha });
 
     ImGui::PushFont(gui->getTahoma28Font());
@@ -196,7 +196,7 @@ void Misc::drawVelocity(ImDrawList* drawList) noexcept
     if (shouldDrawTakeOff)
     {
         const std::string bottomText = "(" + std::to_string(takeOffVelocity) + ")";
-        const Color4 bottomTrueColor = config->misc.velocity.color.enabled ? Color4{ config->misc.velocity.color.color[0], config->misc.velocity.color.color[1], config->misc.velocity.color.color[2], config->misc.velocity.alpha, config->misc.velocity.color.rainbowSpeed, config->misc.velocity.color.rainbow }
+        const Color4 bottomTrueColor = config->misc.velocity.color.enabled ? Color4{ config->misc.velocity.color.asColor4().color[0], config->misc.velocity.color.asColor4().color[1], config->misc.velocity.color.asColor4().color[2], config->misc.velocity.alpha, config->misc.velocity.color.asColor4().rainbowSpeed, config->misc.velocity.color.asColor4().rainbow }
             : (takeOffVelocity <= 250.0f ? Color4{ 0.75f, 0.75f, 0.75f, config->misc.velocity.alpha } : Color4{ 0.11f, 1.0f, 0.42f, config->misc.velocity.alpha });
         const auto bottomSize = ImGui::CalcTextSize(bottomText.c_str());
         drawList->AddText(ImVec2{ (static_cast<float>(screenSizeX) / 2 - bottomSize.x / 2) + 1, Ypos + 20.0f + 1 }, Helpers::calculateColor(Color4{ 0.0f, 0.0f, 0.0f, config->misc.velocity.alpha }), bottomText.c_str());
@@ -1142,7 +1142,7 @@ void Misc::drawAutoPeek(ImDrawList* drawList) noexcept
                 points.push_back(point2d);
         }
 
-        const ImU32 color = (Helpers::calculateColor(config->misc.autoPeek));
+        const ImU32 color = (Helpers::calculateColor(config->misc.autoPeek.asColor4()));
         auto flags_backup = drawList->Flags;
         drawList->Flags |= ImDrawListFlags_AntiAliasedFill;
         drawList->AddConvexPolyFilled(points.data(), points.size(), color);
@@ -1609,7 +1609,7 @@ void Misc::noscopeCrosshair(ImDrawList* drawList) noexcept
             return;
     }
 
-    drawCrosshair(drawList, ImGui::GetIO().DisplaySize / 2, Helpers::calculateColor(config->misc.noscopeCrosshair));
+    drawCrosshair(drawList, ImGui::GetIO().DisplaySize / 2, Helpers::calculateColor(config->misc.noscopeCrosshair.asColor4()));
 }
 
 void Misc::recoilCrosshair(ImDrawList* drawList) noexcept
@@ -1627,7 +1627,7 @@ void Misc::recoilCrosshair(ImDrawList* drawList) noexcept
         return;
 
     if (ImVec2 pos; Helpers::worldToScreen(localPlayerData.aimPunch, pos))
-        drawCrosshair(drawList, pos, Helpers::calculateColor(config->misc.recoilCrosshair));
+        drawCrosshair(drawList, pos, Helpers::calculateColor(config->misc.recoilCrosshair.asColor4()));
 }
 
 void Misc::watermark() noexcept
@@ -2621,8 +2621,8 @@ void Misc::drawOffscreenEnemies(ImDrawList* drawList) noexcept
         Helpers::setAlphaFactor(player.fadingAlpha());
         const auto white = Helpers::calculateColor(255, 255, 255, 255);
         const auto background = Helpers::calculateColor(0, 0, 0, 80);
-        const auto color = Helpers::calculateColor(config->misc.offscreenEnemies);
-        const auto healthBarColor = config->misc.offscreenEnemies.healthBar.type == HealthBar::HealthBased ? Helpers::healthColor(std::clamp(player.health / 100.0f, 0.0f, 1.0f)) : Helpers::calculateColor(config->misc.offscreenEnemies.healthBar);
+        const auto color = Helpers::calculateColor(config->misc.offscreenEnemies.asColor4());
+        const auto healthBarColor = config->misc.offscreenEnemies.healthBar.type == HealthBar::HealthBased ? Helpers::healthColor(std::clamp(player.health / 100.0f, 0.0f, 1.0f)) : Helpers::calculateColor(config->misc.offscreenEnemies.healthBar.asColor4());
         Helpers::setAlphaFactor(1.0f);
 
         const ImVec2 trianglePoints[]{

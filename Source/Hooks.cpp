@@ -1300,18 +1300,18 @@ static void __fastcall particleCollectionSimulateHook(ParticleCollection* thisPo
 
                     for (int i = 0; i < thisPointer->activeParticles; i++) {
                         float* color = thisPointer->particleAttributes.FloatAttributePtr(PARTICLE_ATTRIBUTE_TINT_RGB, i);
-                        if (config->visuals.molotovColor.rainbow) {
-                            color[0] = std::sin(config->visuals.molotovColor.rainbowSpeed * memory->globalVars->realtime) * 0.5f + 0.5f;
-                            color[4] = std::sin(config->visuals.molotovColor.rainbowSpeed * memory->globalVars->realtime + 2 * pi / 3) * 0.5f + 0.5f;
-                            color[8] = std::sin(config->visuals.molotovColor.rainbowSpeed * memory->globalVars->realtime + 4 * pi / 3) * 0.5f + 0.5f;
+                        if (config->visuals.molotovColor.asColor4().rainbow) {
+                            color[0] = std::sin(config->visuals.molotovColor.asColor4().rainbowSpeed * memory->globalVars->realtime) * 0.5f + 0.5f;
+                            color[4] = std::sin(config->visuals.molotovColor.asColor4().rainbowSpeed * memory->globalVars->realtime + 2 * pi / 3) * 0.5f + 0.5f;
+                            color[8] = std::sin(config->visuals.molotovColor.asColor4().rainbowSpeed * memory->globalVars->realtime + 4 * pi / 3) * 0.5f + 0.5f;
                         }
                         else {
-                            color[0] = config->visuals.molotovColor.color[0];
-                            color[4] = config->visuals.molotovColor.color[1];
-                            color[8] = config->visuals.molotovColor.color[2];
+                            color[0] = config->visuals.molotovColor.asColor4().color[0];
+                            color[4] = config->visuals.molotovColor.asColor4().color[1];
+                            color[8] = config->visuals.molotovColor.asColor4().color[2];
                         }
                         float* alpha = thisPointer->particleAttributes.FloatAttributePtr(PARTICLE_ATTRIBUTE_ALPHA, i);
-                        *alpha = config->visuals.molotovColor.color[3];
+                        *alpha = config->visuals.molotovColor.asColor4().color[3];
                     }
 
                 }
@@ -1323,18 +1323,18 @@ static void __fastcall particleCollectionSimulateHook(ParticleCollection* thisPo
 
                 for (int i = 0; i < thisPointer->activeParticles; i++) {
                     float* color = thisPointer->particleAttributes.FloatAttributePtr(PARTICLE_ATTRIBUTE_TINT_RGB, i);
-                    if (config->visuals.smokeColor.rainbow) {
-                        color[0] = std::sin(config->visuals.smokeColor.rainbowSpeed * memory->globalVars->realtime) * 0.5f + 0.5f;
-                        color[4] = std::sin(config->visuals.smokeColor.rainbowSpeed * memory->globalVars->realtime + 2 * pi / 3) * 0.5f + 0.5f;
-                        color[8] = std::sin(config->visuals.smokeColor.rainbowSpeed * memory->globalVars->realtime + 4 * pi / 3) * 0.5f + 0.5f;
+                    if (config->visuals.smokeColor.asColor4().rainbow) {
+                        color[0] = std::sin(config->visuals.smokeColor.asColor4().rainbowSpeed * memory->globalVars->realtime) * 0.5f + 0.5f;
+                        color[4] = std::sin(config->visuals.smokeColor.asColor4().rainbowSpeed * memory->globalVars->realtime + 2 * pi / 3) * 0.5f + 0.5f;
+                        color[8] = std::sin(config->visuals.smokeColor.asColor4().rainbowSpeed * memory->globalVars->realtime + 4 * pi / 3) * 0.5f + 0.5f;
                     }
                     else {
-                        color[0] = config->visuals.smokeColor.color[0];
-                        color[4] = config->visuals.smokeColor.color[1];
-                        color[8] = config->visuals.smokeColor.color[2];
+                        color[0] = config->visuals.smokeColor.asColor4().color[0];
+                        color[4] = config->visuals.smokeColor.asColor4().color[1];
+                        color[8] = config->visuals.smokeColor.asColor4().color[2];
                     }
                     float* alpha = thisPointer->particleAttributes.FloatAttributePtr(PARTICLE_ATTRIBUTE_ALPHA, i);
-                    *alpha = config->visuals.smokeColor.color[3];
+                    *alpha = config->visuals.smokeColor.asColor4().color[3];
                 }
 
             }

@@ -123,7 +123,7 @@ public:
     };
     std::array<Legitbot, 40> legitbot;
     KeyBind legitbotKey{ std::string("legitbot") };
-    ColorToggleOutline legitbotFov{ 1.0f, 1.0f, 1.0f, 0.25f };
+    ColorToggleOutline legitbotFov{ { 1.0f, 1.0f, 1.0f, 0.25f } };
 
     struct RecoilControlSystem {
         bool enabled{ false };
@@ -306,7 +306,7 @@ public:
             ColorToggle color{ 1.f, 1.f, 1.f, 1.f };
             float duration = 2.f;
         } onHitHitbox;
-        ColorToggleOutline spreadCircle { 1.0f, 1.0f, 1.0f, 0.25f };
+        ColorToggleOutline spreadCircle{ { 1.0f, 1.0f, 1.0f, 0.25f } };
         int asusWalls = 100;
         int asusProps = 100;
         bool smokeTimer{ false };

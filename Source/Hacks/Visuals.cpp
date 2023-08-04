@@ -213,7 +213,7 @@ void Visuals::visualizeSpread(ImDrawList* drawList) noexcept
         if (radius > displaySize.x || radius > displaySize.y || !std::isfinite(radius))
             return;
 
-        const auto color = Helpers::calculateColor(config->visuals.spreadCircle);
+        const auto color = Helpers::calculateColor(config->visuals.spreadCircle.asColor4());
         drawList->AddCircleFilled(displaySize / 2.0f, radius, color);
         if (config->visuals.spreadCircle.outline)
             drawList->AddCircle(displaySize / 2.0f, radius, color | IM_COL32_A_MASK);
@@ -261,7 +261,7 @@ void Visuals::drawAimbotFov(ImDrawList* drawList) noexcept
         if (radius > displaySize.x || radius > displaySize.y || !std::isfinite(radius))
             return;
 
-        const auto color = Helpers::calculateColor(config->legitbotFov);
+        const auto color = Helpers::calculateColor(config->legitbotFov.asColor4());
         drawList->AddCircleFilled(localPlayer->shotsFired() > 1 ? pos : displaySize / 2.0f, radius, color);
         if (config->legitbotFov.outline)
             drawList->AddCircle(localPlayer->shotsFired() > 1 ? pos : displaySize / 2.0f, radius, color | IM_COL32_A_MASK, 360);
@@ -677,13 +677,13 @@ void Visuals::colorConsole(int reset) noexcept
                 continue;
             }
 
-            if (config->visuals.console.rainbow) {
-                material[num]->colorModulate(rainbowColor(config->visuals.console.rainbowSpeed));
-                material[num]->alphaModulate(config->visuals.console.color[3]);
+            if (config->visuals.console.asColor4().rainbow) {
+                material[num]->colorModulate(rainbowColor(config->visuals.console.asColor4().rainbowSpeed));
+                material[num]->alphaModulate(config->visuals.console.asColor4().color[3]);
             }
             else {
-                material[num]->colorModulate(config->visuals.console.color[0], config->visuals.console.color[1], config->visuals.console.color[2]);
-                material[num]->alphaModulate(config->visuals.console.color[3]);
+                material[num]->colorModulate(config->visuals.console.asColor4().color[0], config->visuals.console.asColor4().color[1], config->visuals.console.asColor4().color[2]);
+                material[num]->alphaModulate(config->visuals.console.asColor4().color[3]);
             }
         }
     }
@@ -1037,9 +1037,9 @@ void Visuals::footstepESP(GameEvent* event) noexcept
     info.width = static_cast<float>(config->visuals.footsteps.footstepBeamThickness);
     info.fadeLength = 0.0f;
     info.amplitude = 0.0f;
-    info.red = config->visuals.footsteps.footstepBeams.color[0] * 255;
-    info.green = config->visuals.footsteps.footstepBeams.color[1] * 255;
-    info.blue = config->visuals.footsteps.footstepBeams.color[2] * 255;
+    info.red = config->visuals.footsteps.footstepBeams.asColor4().color[0] * 255;
+    info.green = config->visuals.footsteps.footstepBeams.asColor4().color[1] * 255;
+    info.blue = config->visuals.footsteps.footstepBeams.asColor4().color[2] * 255;
     info.brightness = 255;
     info.speed = 0.0f;
     info.startFrame = 0;
@@ -1119,10 +1119,10 @@ void Visuals::bulletTracer(GameEvent& event) noexcept
         beamInfo.haloName = nullptr;
         beamInfo.haloIndex = -1;
 
-        beamInfo.red = 255.0f * config->visuals.bulletTracers.color[0];
-        beamInfo.green = 255.0f * config->visuals.bulletTracers.color[1];
-        beamInfo.blue = 255.0f * config->visuals.bulletTracers.color[2];
-        beamInfo.brightness = 255.0f * config->visuals.bulletTracers.color[3];
+        beamInfo.red = 255.0f * config->visuals.bulletTracers.asColor4().color[0];
+        beamInfo.green = 255.0f * config->visuals.bulletTracers.asColor4().color[1];
+        beamInfo.blue = 255.0f * config->visuals.bulletTracers.asColor4().color[2];
+        beamInfo.brightness = 255.0f * config->visuals.bulletTracers.asColor4().color[3];
 
         beamInfo.type = 0;
         beamInfo.life = 0.0f;
@@ -1162,10 +1162,10 @@ void Visuals::drawBulletImpacts() noexcept
     if (!interfaces->debugOverlay)
         return;
 
-    const int r = static_cast<int>(config->visuals.bulletImpacts.color[0] * 255.f);
-    const int g = static_cast<int>(config->visuals.bulletImpacts.color[1] * 255.f);
-    const int b = static_cast<int>(config->visuals.bulletImpacts.color[2] * 255.f);
-    const int a = static_cast<int>(config->visuals.bulletImpacts.color[3] * 255.f);
+    const int r = static_cast<int>(config->visuals.bulletImpacts.asColor4().color[0] * 255.f);
+    const int g = static_cast<int>(config->visuals.bulletImpacts.asColor4().color[1] * 255.f);
+    const int b = static_cast<int>(config->visuals.bulletImpacts.asColor4().color[2] * 255.f);
+    const int a = static_cast<int>(config->visuals.bulletImpacts.asColor4().color[3] * 255.f);
 
     for (int i = 0; i < static_cast<int>(positions.size()); i++)
     {
@@ -1235,10 +1235,10 @@ void Visuals::drawHitboxMatrix(GameEvent* event) noexcept {
 
     }
 
-    const int r = static_cast<int>(config->visuals.onHitHitbox.color.color[0] * 255.f);
-    const int g = static_cast<int>(config->visuals.onHitHitbox.color.color[1] * 255.f);
-    const int b = static_cast<int>(config->visuals.onHitHitbox.color.color[2] * 255.f);
-    const int a = static_cast<int>(config->visuals.onHitHitbox.color.color[3] * 255.f);
+    const int r = static_cast<int>(config->visuals.onHitHitbox.color.asColor4().color[0] * 255.f);
+    const int g = static_cast<int>(config->visuals.onHitHitbox.color.asColor4().color[1] * 255.f);
+    const int b = static_cast<int>(config->visuals.onHitHitbox.color.asColor4().color[2] * 255.f);
+    const int a = static_cast<int>(config->visuals.onHitHitbox.color.asColor4().color[3] * 255.f);
     const float d = config->visuals.onHitHitbox.duration;
 
     for (int i = 0; i < set->numHitboxes; i++) {
@@ -1260,7 +1260,7 @@ void Visuals::drawMolotovHull(ImDrawList* drawList) noexcept
     if (!config->visuals.molotovHull.enabled)
         return;
 
-    const auto color = Helpers::calculateColor(config->visuals.molotovHull);
+    const auto color = Helpers::calculateColor(config->visuals.molotovHull.asColor4());
 
     GameData::Lock lock;
 
@@ -1305,7 +1305,7 @@ void Visuals::drawSmokeHull(ImDrawList* drawList) noexcept
     if (!config->visuals.smokeHull.enabled)
         return;
 
-    const auto color = Helpers::calculateColor(config->visuals.smokeHull);
+    const auto color = Helpers::calculateColor(config->visuals.smokeHull.asColor4());
 
     GameData::Lock lock;
 

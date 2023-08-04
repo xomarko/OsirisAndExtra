@@ -503,8 +503,8 @@ void GrenadePrediction::draw() noexcept
 			const auto horizontalOffset = textSize.x / 2;
 			const auto verticalOffset = textSize.y;
 
-			drawList->AddText({ point.first.x - horizontalOffset + 1.0f, point.first.y - verticalOffset + 1.0f }, Helpers::calculateColor(config->misc.nadeDamagePredict) & IM_COL32_A_MASK, point.second.c_str());
-			drawList->AddText({ point.first.x - horizontalOffset, point.first.y - verticalOffset }, Helpers::calculateColor(config->misc.nadeDamagePredict), point.second.c_str());
+			drawList->AddText({ point.first.x - horizontalOffset + 1.0f, point.first.y - verticalOffset + 1.0f }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColor4()) & IM_COL32_A_MASK, point.second.c_str());
+			drawList->AddText({ point.first.x - horizontalOffset, point.first.y - verticalOffset }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColor4()), point.second.c_str());
 		}
 	}
 }

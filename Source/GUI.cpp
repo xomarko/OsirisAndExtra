@@ -1183,7 +1183,7 @@ void GUI::renderStreamProofESPWindow() noexcept
                 ImGui::Combo("Type", &playerConfig.healthBar.type, "Gradient\0Solid\0Health-based\0");
                 if (playerConfig.healthBar.type == HealthBar::Solid) {
                     ImGui::SameLine();
-                    ImGuiCustom::colorPicker("", static_cast<Color4&>(playerConfig.healthBar));
+                    ImGuiCustom::colorPicker("", (playerConfig.healthBar.asColor4()));
                 }
                 ImGui::EndPopup();
             }
@@ -1417,10 +1417,10 @@ void GUI::renderVisualsWindow() noexcept
     ImGui::SliderFloat("Hit effect time", &config->visuals.hitEffectTime, 0.1f, 1.5f, "%.2fs");
     ImGui::Combo("Hit marker", &config->visuals.hitMarker, "None\0Default (Cross)\0");
     ImGui::SliderFloat("Hit marker time", &config->visuals.hitMarkerTime, 0.1f, 1.5f, "%.2fs");
-    ImGuiCustom::colorPicker("Bullet Tracers", config->visuals.bulletTracers.color.data(), &config->visuals.bulletTracers.color[3], nullptr, nullptr, &config->visuals.bulletTracers.enabled);
-    ImGuiCustom::colorPicker("Bullet Impacts", config->visuals.bulletImpacts.color.data(), &config->visuals.bulletImpacts.color[3], nullptr, nullptr, &config->visuals.bulletImpacts.enabled);
+    ImGuiCustom::colorPicker("Bullet Tracers", config->visuals.bulletTracers.asColor4().color.data(), &config->visuals.bulletTracers.asColor4().color[3], nullptr, nullptr, &config->visuals.bulletTracers.enabled);
+    ImGuiCustom::colorPicker("Bullet Impacts", config->visuals.bulletImpacts.asColor4().color.data(), &config->visuals.bulletImpacts.asColor4().color[3], nullptr, nullptr, &config->visuals.bulletImpacts.enabled);
     ImGui::SliderFloat("Bullet Impacts time", &config->visuals.bulletImpactsTime, 0.1f, 5.0f, "Bullet Impacts time: %.2fs");
-    ImGuiCustom::colorPicker("On Hit Hitbox", config->visuals.onHitHitbox.color.color.data(), &config->visuals.onHitHitbox.color.color[3], nullptr, nullptr, &config->visuals.onHitHitbox.color.enabled);
+    ImGuiCustom::colorPicker("On Hit Hitbox", config->visuals.onHitHitbox.color.asColor4().color.data(), &config->visuals.onHitHitbox.color.asColor4().color[3], nullptr, nullptr, &config->visuals.onHitHitbox.color.enabled);
     ImGui::SliderFloat("On Hit Hitbox Time", &config->visuals.onHitHitbox.duration, 0.1f, 60.0f, "On Hit Hitbox time: % .2fs");
     ImGuiCustom::colorPicker("Molotov Hull", config->visuals.molotovHull);
     ImGuiCustom::colorPicker("Smoke Hull", config->visuals.smokeHull);
@@ -1758,7 +1758,7 @@ void GUI::renderMiscWindow() noexcept
     if (ImGui::BeginPopup("")) {
         ImGui::SliderFloat("Position", &config->misc.velocity.position, 0.0f, 1.0f);
         ImGui::SliderFloat("Alpha", &config->misc.velocity.alpha, 0.0f, 1.0f);
-        ImGuiCustom::colorPicker("Force color", config->misc.velocity.color.color.data(), nullptr, &config->misc.velocity.color.rainbow, &config->misc.velocity.color.rainbowSpeed, &config->misc.velocity.color.enabled);
+        ImGuiCustom::colorPicker("Force color", config->misc.velocity.color.asColor4().color.data(), nullptr, &config->misc.velocity.color.asColor4().rainbow, &config->misc.velocity.color.asColor4().rainbowSpeed, &config->misc.velocity.color.enabled);
         ImGui::EndPopup();
     }
     ImGui::PopID();
@@ -1791,7 +1791,7 @@ void GUI::renderMiscWindow() noexcept
     ImGui::PushID("Fakeduck Key");
     ImGui::hotkey2("", config->misc.fakeduckKey);
     ImGui::PopID();
-    ImGuiCustom::colorPicker("Auto peek", config->misc.autoPeek.color.data(), &config->misc.autoPeek.color[3], &config->misc.autoPeek.rainbow, &config->misc.autoPeek.rainbowSpeed, &config->misc.autoPeek.enabled);
+    ImGuiCustom::colorPicker("Auto peek", config->misc.autoPeek.asColor4().color.data(), &config->misc.autoPeek.asColor4().color[3], &config->misc.autoPeek.asColor4().rainbow, &config->misc.autoPeek.asColor4().rainbowSpeed, &config->misc.autoPeek.enabled);
     ImGui::SameLine();
     ImGui::PushID("Auto peek Key");
     ImGui::hotkey2("", config->misc.autoPeekKey);
@@ -1843,7 +1843,7 @@ void GUI::renderMiscWindow() noexcept
     ImGui::PopID();
 
     ImGui::Checkbox("Watermark", &config->misc.watermark.enabled);
-    ImGuiCustom::colorPicker("Offscreen Enemies", config->misc.offscreenEnemies, &config->misc.offscreenEnemies.enabled);
+    ImGuiCustom::colorPicker("Offscreen Enemies", config->misc.offscreenEnemies.asColor4(), &config->misc.offscreenEnemies.enabled);
     ImGui::SameLine();
     ImGui::PushID("Offscreen Enemies");
     if (ImGui::Button("..."))
@@ -1856,7 +1856,7 @@ void GUI::renderMiscWindow() noexcept
         ImGui::Combo("Type", &config->misc.offscreenEnemies.healthBar.type, "Gradient\0Solid\0Health-based\0");
         if (config->misc.offscreenEnemies.healthBar.type == HealthBar::Solid) {
             ImGui::SameLine();
-            ImGuiCustom::colorPicker("", static_cast<Color4&>(config->misc.offscreenEnemies.healthBar));
+            ImGuiCustom::colorPicker("", (config->misc.offscreenEnemies.healthBar.asColor4()));
         }
         ImGui::EndPopup();
     }
