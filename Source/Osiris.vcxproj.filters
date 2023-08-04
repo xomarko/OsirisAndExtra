@@ -397,9 +397,6 @@
     <ClInclude Include="Hacks\SkinChanger.h">
       <Filter>Hacks</Filter>
     </ClInclude>
-    <ClInclude Include="SDK\FrameStage.h">
-      <Filter>SDK</Filter>
-    </ClInclude>
     <ClInclude Include="Hacks\Backtrack.h">
       <Filter>Hacks</Filter>
     </ClInclude>
@@ -692,6 +689,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SDK\Constants\ClassId.h">
+      <Filter>SDK\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Constants\FrameStage.h">
       <Filter>SDK\Constants</Filter>
     </ClInclude>
   </ItemGroup>

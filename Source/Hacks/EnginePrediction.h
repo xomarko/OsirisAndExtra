@@ -1,7 +1,8 @@
 #pragma once
 
-#include "../SDK/FrameStage.h"
 #include "../SDK/Vector.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 #include <array>
 

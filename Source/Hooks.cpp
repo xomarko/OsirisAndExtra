@@ -41,14 +41,12 @@
 #include "Hacks/Triggerbot.h"
 #include "Hacks/Visuals.h"
 
-#include "SDK/Constants/ClassId.h"
 #include "SDK/Client.h"
 #include "SDK/ClientState.h"
 #include "SDK/ConVar.h"
 #include "SDK/Engine.h"
 #include "SDK/Entity.h"
 #include "SDK/EntityList.h"
-#include "SDK/FrameStage.h"
 #include "SDK/GameEvent.h"
 #include "SDK/GameMovement.h"
 #include "SDK/GameUI.h"
@@ -71,6 +69,9 @@
 #include "SDK/UserCmd.h"
 #include "SDK/ViewSetup.h"
 #include "SDK/ParticleCollection.h"
+
+#include "SDK/Constants/ClassId.h"
+#include "SDK/Constants/FrameStage.h"
 
 static LRESULT __stdcall wndProc(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {

@@ -22,7 +22,6 @@
 #include "../SDK/ClientMode.h"
 #include "../SDK/ConVar.h"
 #include "../SDK/Entity.h"
-#include "../SDK/FrameStage.h"
 #include "../SDK/GameEvent.h"
 #include "../SDK/GlobalVars.h"
 #include "../SDK/Input.h"
@@ -37,6 +36,8 @@
 #include "../SDK/ViewSetup.h"
 #include "../SDK/WeaponData.h"
 #include "../SDK/WeaponSystem.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 #include "../imguiCustom.h"
 

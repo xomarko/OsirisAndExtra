@@ -7,10 +7,11 @@
 
 #include "../SDK/ConVar.h"
 #include "../SDK/Entity.h"
-#include "../SDK/FrameStage.h"
 #include "../SDK/LocalPlayer.h"
 #include "../SDK/NetworkChannel.h"
 #include "../SDK/UserCmd.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 static std::deque<Backtrack::incomingSequence> sequences;
 

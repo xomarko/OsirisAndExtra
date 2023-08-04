@@ -1,9 +1,11 @@
 #pragma once
+
 #include "../SDK/matrix3x4.h"
 #include "../SDK/Vector.h"
 #include "../SDK/Entity.h"
-#include "../SDK/FrameStage.h"
 #include "../SDK/ModelInfo.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 #include <array>
 #include <deque>

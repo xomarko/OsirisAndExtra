@@ -7,12 +7,13 @@
 #include "../SDK/Engine.h"
 #include "../SDK/Entity.h"
 #include "../SDK/EntityList.h"
-#include "../SDK/FrameStage.h"
 #include "../SDK/GameMovement.h"
 #include "../SDK/GlobalVars.h"
 #include "../SDK/MoveHelper.h"
 #include "../SDK/Prediction.h"
 #include "../SDK/PredictionCopy.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 static int localPlayerFlags;
 static Vector localPlayerVelocity;
