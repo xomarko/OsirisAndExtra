@@ -165,12 +165,6 @@ static void from_json(const json& j, Projectile& p)
     read<value_t::object>(j, "Trails", p.trails);
 }
 
-static void from_json(const json& j, HealthBar& o)
-{
-    from_json(j, static_cast<ColorToggle&>(o));
-    read(j, "Type", o.type);
-}
-
 static void from_json(const json& j, Player& p)
 {
     from_json(j, static_cast<Shared&>(p));
@@ -839,12 +833,6 @@ static void to_json(json& j, const Shared& o, const Shared& dummy = {})
     WRITE("Box", box);
     WRITE("Name", name);
     WRITE("Text Cull Distance", textCullDistance);
-}
-
-static void to_json(json& j, const HealthBar& o, const HealthBar& dummy = {})
-{
-    to_json(j, static_cast<const ColorToggle&>(o), dummy);
-    WRITE("Type", type);
 }
 
 static void to_json(json& j, const Player& o, const Player& dummy = {})
