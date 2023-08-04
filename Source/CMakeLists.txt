@@ -49,6 +49,7 @@ endif()
 target_sources(OsirisOBJ PRIVATE
   AntiDetection.cpp
   Config.cpp
+  ConfigStructs.cpp
   EventListener.cpp
   GameData.cpp
   GUI.cpp
