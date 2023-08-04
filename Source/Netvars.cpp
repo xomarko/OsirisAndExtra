@@ -23,13 +23,20 @@
 
 static std::unordered_map<std::uint32_t, std::pair<recvProxy, recvProxy*>> proxies;
 
-static void __cdecl spottedHook(recvProxyData& data, void* arg2, void* arg3) noexcept
+static void __cdecl spottedHook(recvProxyData& data, void* outStruct, void* arg3) noexcept
 {
-    if (config->misc.radarHack)
+    const auto entity = reinterpret_cast<Entity*>(outStruct);
+
+    if (config->misc.radarHack) {
         data.value._int = 1;
 
+        if (localPlayer)
+            if (const auto index = localPlayer->index(); index > 0 && index <= 32)
+                entity->spottedByMask() |= 1 << (index - 1);
+    }
+
     constexpr auto hash{ fnv::hash("CBaseEntity->m_bSpotted") };
-    proxies[hash].first(data, arg2, arg3);
+    proxies[hash].first(data, outStruct, arg3);
 }
 
 static void __cdecl viewModelSequence(recvProxyData& data, void* outStruct, void* arg3) noexcept
