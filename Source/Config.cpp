@@ -75,25 +75,6 @@ Config::Config() noexcept
 }
 #pragma region  Read
 
-static void from_json(const json& j, ColorToggle& ct)
-{
-    from_json(j, static_cast<Color4&>(ct));
-    read(j, "Enabled", ct.enabled);
-}
-
-static void from_json(const json& j, Color3& c)
-{
-    read(j, "Color", c.color);
-    read(j, "Rainbow", c.rainbow);
-    read(j, "Rainbow Speed", c.rainbowSpeed);
-}
-
-static void from_json(const json& j, ColorToggle3& ct)
-{
-    from_json(j, static_cast<Color3&>(ct));
-    read(j, "Enabled", ct.enabled);
-}
-
 static void from_json(const json& j, ColorToggleRounding& ctr)
 {
     from_json(j, static_cast<ColorToggle&>(ctr));
