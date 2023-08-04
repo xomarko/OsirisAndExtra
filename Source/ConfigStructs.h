@@ -49,10 +49,13 @@ struct ColorToggleOutline : ColorToggle {
     bool outline = true;
 };
 
-struct ColorToggleThickness : ColorToggle {
+struct ColorToggleThickness : private ColorToggle {
     ColorToggleThickness() = default;
     ColorToggleThickness(float thickness) : thickness{ thickness } { }
     float thickness = 1.0f;
+
+    ColorToggle& asColorToggle() noexcept { return static_cast<ColorToggle&>(*this); }
+    const ColorToggle& asColorToggle() const noexcept { return static_cast<const ColorToggle&>(*this); }
 };
 
 struct ColorToggleRounding : ColorToggle {
@@ -308,6 +311,12 @@ static void to_json(json& j, const ColorToggle3& o, const ColorToggle3& dummy = 
     WRITE("Enabled", enabled);
 }
 
+static void to_json(json& j, const ColorToggleThickness& o, const ColorToggleThickness& dummy = {})
+{
+    to_json(j, o.asColorToggle(), dummy.asColorToggle());
+    WRITE("Thickness", thickness);
+}
+
 template <value_t Type, typename T>
 static typename std::enable_if_t<!std::is_same_v<T, bool>> read(const json& j, const char* key, T& o) noexcept
 {
@@ -476,4 +485,11 @@ static void from_json(const json& j, ColorToggle3& ct)
 {
     from_json(j, ct.asColor3());
     read(j, "Enabled", ct.enabled);
+}
+
+static void from_json(const json& j, ColorToggleThickness& ctt)
+{
+    from_json(j, ctt.asColorToggle());
+
+    read(j, "Thickness", ctt.thickness);
 }

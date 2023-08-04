@@ -453,7 +453,7 @@ void GrenadePrediction::run(UserCmd* cmd) noexcept
 
 	if (lastPos.notNull()) {
 		drawCircle(lastPos, 120, 150);
-		if (config->misc.nadeDamagePredict.enabled && itemDefinition == WeaponId::HeGrenade)
+		if (config->misc.nadeDamagePredict.asColorToggle().enabled && itemDefinition == WeaponId::HeGrenade)
 			drawDamage(lastPos);
 	}
 		
@@ -495,7 +495,7 @@ void GrenadePrediction::draw() noexcept
 		drawList->AddLine(ImVec2(point.first.x, point.first.y), ImVec2(point.second.x, point.second.y), trailColor, 1.5f);
 
 	// draw nade damage
-	if (config->misc.nadeDamagePredict.enabled)
+	if (config->misc.nadeDamagePredict.asColorToggle().enabled)
 	{
 		for (auto& point : dmgPoints)
 		{
@@ -503,8 +503,8 @@ void GrenadePrediction::draw() noexcept
 			const auto horizontalOffset = textSize.x / 2;
 			const auto verticalOffset = textSize.y;
 
-			drawList->AddText({ point.first.x - horizontalOffset + 1.0f, point.first.y - verticalOffset + 1.0f }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColor4()) & IM_COL32_A_MASK, point.second.c_str());
-			drawList->AddText({ point.first.x - horizontalOffset, point.first.y - verticalOffset }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColor4()), point.second.c_str());
+			drawList->AddText({ point.first.x - horizontalOffset + 1.0f, point.first.y - verticalOffset + 1.0f }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColorToggle().asColor4()) & IM_COL32_A_MASK, point.second.c_str());
+			drawList->AddText({ point.first.x - horizontalOffset, point.first.y - verticalOffset }, Helpers::calculateColor(config->misc.nadeDamagePredict.asColorToggle().asColor4()), point.second.c_str());
 		}
 	}
 }

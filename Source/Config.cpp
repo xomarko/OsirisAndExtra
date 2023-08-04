@@ -89,13 +89,6 @@ static void from_json(const json& j, ColorToggleOutline& cto)
     read(j, "Outline", cto.outline);
 }
 
-static void from_json(const json& j, ColorToggleThickness& ctt)
-{
-    from_json(j, static_cast<ColorToggle&>(ctt));
-
-    read(j, "Thickness", ctt.thickness);
-}
-
 static void from_json(const json& j, ColorToggleThicknessRounding& cttr)
 {
     from_json(j, static_cast<ColorToggleRounding&>(cttr));
@@ -805,12 +798,6 @@ static void to_json(json& j, const ColorToggleRounding& o, const ColorToggleRoun
 {
     to_json(j, static_cast<const ColorToggle&>(o), dummy);
     WRITE("Rounding", rounding);
-}
-
-static void to_json(json& j, const ColorToggleThickness& o, const ColorToggleThickness& dummy = {})
-{
-    to_json(j, static_cast<const ColorToggle&>(o), dummy);
-    WRITE("Thickness", thickness);
 }
 
 static void to_json(json& j, const ColorToggleOutline& o, const ColorToggleOutline& dummy = {})

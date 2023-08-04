@@ -1600,7 +1600,7 @@ static void drawCrosshair(ImDrawList* drawList, const ImVec2& pos, ImU32 color) 
 
 void Misc::noscopeCrosshair(ImDrawList* drawList) noexcept
 {
-    if (!config->misc.noscopeCrosshair.enabled)
+    if (!config->misc.noscopeCrosshair.asColorToggle().enabled)
         return;
 
     {
@@ -1609,12 +1609,12 @@ void Misc::noscopeCrosshair(ImDrawList* drawList) noexcept
             return;
     }
 
-    drawCrosshair(drawList, ImGui::GetIO().DisplaySize / 2, Helpers::calculateColor(config->misc.noscopeCrosshair.asColor4()));
+    drawCrosshair(drawList, ImGui::GetIO().DisplaySize / 2, Helpers::calculateColor(config->misc.noscopeCrosshair.asColorToggle().asColor4()));
 }
 
 void Misc::recoilCrosshair(ImDrawList* drawList) noexcept
 {
-    if (!config->misc.recoilCrosshair.enabled)
+    if (!config->misc.recoilCrosshair.asColorToggle().enabled)
         return;
 
     GameData::Lock lock;
@@ -1627,7 +1627,7 @@ void Misc::recoilCrosshair(ImDrawList* drawList) noexcept
         return;
 
     if (ImVec2 pos; Helpers::worldToScreen(localPlayerData.aimPunch, pos))
-        drawCrosshair(drawList, pos, Helpers::calculateColor(config->misc.recoilCrosshair.asColor4()));
+        drawCrosshair(drawList, pos, Helpers::calculateColor(config->misc.recoilCrosshair.asColorToggle().asColor4()));
 }
 
 void Misc::watermark() noexcept
