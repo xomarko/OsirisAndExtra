@@ -1357,50 +1357,50 @@ static void __fastcall getColorModulationHook(void* thisPointer, void* edx, floa
 
     if (config->visuals.world.enabled && std::strstr(mat->getTextureGroupName(), "World"))
     {
-        if (config->visuals.world.rainbow)
+        if (config->visuals.world.asColor3().rainbow)
         {
-            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.world.rainbowSpeed) };
+            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.world.asColor3().rainbowSpeed) };
             *r *= colorR;
             *g *= colorG;
             *b *= colorB;
         }
         else
         {
-            *r *= config->visuals.world.color.at(0);
-            *g *= config->visuals.world.color.at(1);
-            *b *= config->visuals.world.color.at(2);
+            *r *= config->visuals.world.asColor3().color.at(0);
+            *g *= config->visuals.world.asColor3().color.at(1);
+            *b *= config->visuals.world.asColor3().color.at(2);
         }
     }
     else if (config->visuals.props.enabled && std::strstr(mat->getTextureGroupName(), "StaticProp"))
     {
-        if (config->visuals.props.rainbow)
+        if (config->visuals.props.asColor3().rainbow)
         {
-            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.props.rainbowSpeed) };
+            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.props.asColor3().rainbowSpeed) };
             *r *= colorR;
             *g *= colorG;
             *b *= colorB;
         }
         else
         {
-            *r *= config->visuals.props.color.at(0);
-            *g *= config->visuals.props.color.at(1);
-            *b *= config->visuals.props.color.at(2);
+            *r *= config->visuals.props.asColor3().color.at(0);
+            *g *= config->visuals.props.asColor3().color.at(1);
+            *b *= config->visuals.props.asColor3().color.at(2);
         }
     }
     else if (config->visuals.sky.enabled && std::strstr(mat->getTextureGroupName(), "SkyBox"))
     {
-        if (config->visuals.sky.rainbow)
+        if (config->visuals.sky.asColor3().rainbow)
         {
-            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.sky.rainbowSpeed) };
+            const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.sky.asColor3().rainbowSpeed) };
             *r *= colorR;
             *g *= colorG;
             *b *= colorB;
         }
         else
         {
-            *r *= config->visuals.sky.color.at(0);
-            *g *= config->visuals.sky.color.at(1);
-            *b *= config->visuals.sky.color.at(2);
+            *r *= config->visuals.sky.asColor3().color.at(0);
+            *g *= config->visuals.sky.asColor3().color.at(1);
+            *b *= config->visuals.sky.asColor3().color.at(2);
         }
     }
 }

@@ -156,15 +156,15 @@ void Logger::console() noexcept
     }
 
     std::array<std::uint8_t, 4> color;
-    if (!config->misc.logger.rainbow)
+    if (!config->misc.logger.asColor3().rainbow)
     {
-        color.at(0) = static_cast<uint8_t>(config->misc.logger.color.at(0) * 255.0f);
-        color.at(1) = static_cast<uint8_t>(config->misc.logger.color.at(1) * 255.0f);
-        color.at(2) = static_cast<uint8_t>(config->misc.logger.color.at(2) * 255.0f);
+        color.at(0) = static_cast<uint8_t>(config->misc.logger.asColor3().color.at(0) * 255.0f);
+        color.at(1) = static_cast<uint8_t>(config->misc.logger.asColor3().color.at(1) * 255.0f);
+        color.at(2) = static_cast<uint8_t>(config->misc.logger.asColor3().color.at(2) * 255.0f);
     }
     else
     {
-        const auto [colorR, colorG, colorB] { rainbowColor(config->misc.logger.rainbowSpeed) };
+        const auto [colorR, colorG, colorB] { rainbowColor(config->misc.logger.asColor3().rainbowSpeed) };
         color.at(0) = static_cast<uint8_t>(colorR * 255.0f);
         color.at(1) = static_cast<uint8_t>(colorG * 255.0f);
         color.at(2) = static_cast<uint8_t>(colorB * 255.0f);
@@ -198,7 +198,7 @@ void Logger::render(ImDrawList* drawList) noexcept
 
         const auto alphaBackup = Helpers::getAlphaFactor();
         Helpers::setAlphaFactor(renderLogs[i].alpha / 255.0f);
-        const auto color = Helpers::calculateColor(config->misc.logger);
+        const auto color = Helpers::calculateColor(config->misc.logger.asColor3());
         Helpers::setAlphaFactor(alphaBackup);
         drawList->AddText(ImVec2{ 14.0f, 5.0f + static_cast<float>(20 * i) + 1.0f }, color & IM_COL32_A_MASK, renderLogs[i].text.c_str());
         drawList->AddText(ImVec2{ 14.0f, 5.0f + static_cast<float>(20 * i) + 1.0f }, color, renderLogs[i].text.c_str());

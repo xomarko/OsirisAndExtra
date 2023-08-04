@@ -801,25 +801,6 @@ void Config::load(const char8_t* name, bool incremental) noexcept
 
 #pragma region  Write
 
-static void to_json(json& j, const ColorToggle& o, const ColorToggle& dummy = {})
-{
-    to_json(j, static_cast<const Color4&>(o), dummy);
-    WRITE("Enabled", enabled);
-}
-
-static void to_json(json& j, const Color3& o, const Color3& dummy = {})
-{
-    WRITE("Color", color);
-    WRITE("Rainbow", rainbow);
-    WRITE("Rainbow Speed", rainbowSpeed);
-}
-
-static void to_json(json& j, const ColorToggle3& o, const ColorToggle3& dummy = {})
-{
-    to_json(j, static_cast<const Color3&>(o), dummy);
-    WRITE("Enabled", enabled);
-}
-
 static void to_json(json& j, const ColorToggleRounding& o, const ColorToggleRounding& dummy = {})
 {
     to_json(j, static_cast<const ColorToggle&>(o), dummy);

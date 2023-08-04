@@ -25,8 +25,14 @@ struct Color3 {
 };
 #pragma pack(pop)
 
-struct ColorToggle3 : public Color3 {
+struct ColorToggle3 : private Color3 {
+    ColorToggle3() = default;
+    ColorToggle3(float r, float g, float b) : Color3{ { r, g, b } } {}
+
     bool enabled = false;
+
+    Color3& asColor3() noexcept { return static_cast<Color3&>(*this); }
+    const Color3& asColor3() const noexcept { return static_cast<const Color3&>(*this); }
 };
 
 struct ColorToggle : Color4 {
@@ -277,6 +283,25 @@ static void to_json(json& j, const KeyBind& o, const KeyBind& dummy)
     }
 }
 
+static void to_json(json& j, const ColorToggle& o, const ColorToggle& dummy = {})
+{
+    to_json(j, static_cast<const Color4&>(o), dummy);
+    WRITE("Enabled", enabled);
+}
+
+static void to_json(json& j, const Color3& o, const Color3& dummy = {})
+{
+    WRITE("Color", color);
+    WRITE("Rainbow", rainbow);
+    WRITE("Rainbow Speed", rainbowSpeed);
+}
+
+static void to_json(json& j, const ColorToggle3& o, const ColorToggle3& dummy = {})
+{
+    to_json(j, o.asColor3(), dummy.asColor3());
+    WRITE("Enabled", enabled);
+}
+
 template <value_t Type, typename T>
 static typename std::enable_if_t<!std::is_same_v<T, bool>> read(const json& j, const char* key, T& o) noexcept
 {
@@ -443,6 +468,6 @@ static void from_json(const json& j, Color3& c)
 
 static void from_json(const json& j, ColorToggle3& ct)
 {
-    from_json(j, static_cast<Color3&>(ct));
+    from_json(j, ct.asColor3());
     read(j, "Enabled", ct.enabled);
 }

@@ -197,18 +197,18 @@ void GameData::update() noexcept
 
                     unsigned char _color[3];
 
-                    if (config->visuals.fog.rainbow)
+                    if (config->visuals.fog.asColor3().rainbow)
                     {
-                        const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.fog.rainbowSpeed) };
+                        const auto [colorR, colorG, colorB] { rainbowColor(config->visuals.fog.asColor3().rainbowSpeed) };
                         _color[0] = std::clamp(static_cast<int>(colorR * 255.0f), 0, 255);
                         _color[1] = std::clamp(static_cast<int>(colorG * 255.0f), 0, 255);
                         _color[2] = std::clamp(static_cast<int>(colorB * 255.0f), 0, 255);
                     }
                     else
                     {
-                        _color[0] = std::clamp(static_cast<int>(config->visuals.fog.color[0] * 255.0f), 0, 255);
-                        _color[1] = std::clamp(static_cast<int>(config->visuals.fog.color[1] * 255.0f), 0, 255);
-                        _color[2] = std::clamp(static_cast<int>(config->visuals.fog.color[2] * 255.0f), 0, 255);
+                        _color[0] = std::clamp(static_cast<int>(config->visuals.fog.asColor3().color[0] * 255.0f), 0, 255);
+                        _color[1] = std::clamp(static_cast<int>(config->visuals.fog.asColor3().color[1] * 255.0f), 0, 255);
+                        _color[2] = std::clamp(static_cast<int>(config->visuals.fog.asColor3().color[2] * 255.0f), 0, 255);
                     }
 
                     const unsigned long color = *(unsigned long*)_color;
