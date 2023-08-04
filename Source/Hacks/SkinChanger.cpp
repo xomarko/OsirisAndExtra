@@ -648,15 +648,15 @@ static int get_new_animation(const uint32_t model, const int sequence) noexcept
     {
         switch (sequence)
         {
-        case SEQUENCE_DEFAULT_IDLE2:
-            return SEQUENCE_FALCHION_IDLE1;
+        case SEQUENCE_DEFAULT_DRAW:
+        case SEQUENCE_DEFAULT_IDLE1:
+        case SEQUENCE_DEFAULT_HEAVY_HIT1:
+        case SEQUENCE_DEFAULT_HEAVY_BACKSTAB:
+            return sequence;
         case SEQUENCE_DEFAULT_HEAVY_MISS1:
             return random(SEQUENCE_FALCHION_HEAVY_MISS1, SEQUENCE_FALCHION_HEAVY_MISS1_NOFLIP);
         case SEQUENCE_DEFAULT_LOOKAT01:
             return random(SEQUENCE_FALCHION_LOOKAT01, SEQUENCE_FALCHION_LOOKAT02);
-        case SEQUENCE_DEFAULT_DRAW:
-        case SEQUENCE_DEFAULT_IDLE1:
-            return sequence;
         default:
             return sequence - 1;
         }
