@@ -36,7 +36,7 @@ There are two ways of downloading the source code:
 
 Choose this option if you want pure source and you're not going to contribute to the repo. Download size ~600 KB.
 
-To download source code this way [click here](https://github.com/notgoodusename/OsirisAndExtra/archive/main.zip).
+To download source code this way [click here](https://github.com/xomarko/OsirisAndExtra/archive/main.zip).
 
 #### With [git](https://git-scm.com)
 
@@ -44,17 +44,17 @@ Choose this option if you're going to contribute to the repo or you want to use 
 
 Open git command prompt and enter following command:
 
-    git clone --depth=1 https://github.com/notgoodusename/OsirisAndExtra.git
+    git clone --depth=1 https://github.com/xomarko/OsirisAndExtra.git
 
 The `OsirisAndExtra` folder should have been successfully created, containing all the source files.
 
 ### Compiling from source
 
-When you have equipped a copy of the source code, next step is opening **Osiris.sln** in Microsoft Visual Studio 2019.
+When you have equipped a copy of the source code, next step is opening **Osiris.sln** in Microsoft Visual Studio 2019 or newer.
 
 Then change build configuration to `Release | x86` and simply press **Build solution**.
 
-If everything went right you should receive the `Osiris.dll`  binary file.
+If everything went right you should've received a binary file named `Osiris.dll`.
 
 ### Loading / Injecting into game process
 
@@ -68,7 +68,7 @@ If your CPU supports AVX / AVX2 / AVX-512 instruction set, you can enable it in 
 ## FAQ
 
 ### How do I open the menu?
-Press <kbd>INSERT</kbd> while focused on CS:GO window.
+Press <kbd>INSERT</kbd> while focused on CS:GO game window.
 
 ### Where are my configs saved?
 Configuration files are saved inside `Osiris` folder in your `Documents` folder (`%USERPROFILE%\Documents\Osiris`). The config is in human readable format and can be edited (e.g, using notepad). Sometimes after updates configuration file needs to be deleted and recreated.
@@ -99,4 +99,4 @@ This work is licensed under a
 
 ## Also see
 
-[Osiris](https://github.com/danielkrupinski/Osiris) - A Awesome free and open source cheat for CS:GO, and the base for this cheat
+[Osiris](https://github.com/danielkrupinski/Osiris) - A Awesome free and open source cheat for CS:GO, and the base for this cheat.
