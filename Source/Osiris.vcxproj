@@ -47,6 +47,7 @@
     </ClCompile>
     <ClCompile Include="AntiDetection.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="ConfigStructs.cpp" />
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="..\Dependencies\freetype\src\autofit\autofit.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
