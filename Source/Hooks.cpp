@@ -427,6 +427,12 @@ static bool __stdcall createMove(float inputSampleTime, UserCmd* cmd, bool& send
 
     previousViewAngles = cmd->viewangles;
 
+    cmd->viewanglesBackup.x = cmd->viewangles.x;
+    cmd->viewanglesBackup.y = cmd->viewangles.y;
+    cmd->viewanglesBackup.z = cmd->viewangles.z;
+
+    cmd->buttonsBackup = cmd->buttons;
+
     Visuals::updateShots(cmd);
 
     if (localPlayer && localPlayer->isAlive())
