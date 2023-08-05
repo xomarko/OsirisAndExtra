@@ -1,5 +1,3 @@
-#include "../Config.h"
-
 #include "AimbotFunctions.h"
 #include "Animations.h"
 #include "Backtrack.h"

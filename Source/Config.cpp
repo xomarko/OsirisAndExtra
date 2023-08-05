@@ -1,7 +1,12 @@
+#include <algorithm>
+#include <cstdlib>
 #include <fstream>
+#include <iomanip>
+#include <iterator>
 #include <Windows.h>
 #include <shellapi.h>
 #include <ShlObj.h>
+#include <system_error>
 
 #include "nlohmann/json.hpp"
 
@@ -9,14 +14,11 @@
 #include "imgui/imgui_internal.h"
 
 #include "Config.h"
-#include "Helpers.h"
 
 #include "Hacks/AntiAim.h"
 #include "Hacks/Backtrack.h"
 #include "Hacks/Glow.h"
 #include "Hacks/Sound.h"
-
-#include "SDK/Platform.h"
 
 int CALLBACK fontCallback(const LOGFONTW* lpelfe, const TEXTMETRICW*, DWORD, LPARAM lParam)
 {

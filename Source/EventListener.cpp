@@ -14,6 +14,8 @@
 #include "Hacks/SkinChanger.h"
 #include "Hacks/Visuals.h"
 
+#include "SDK/UtlVector.h"
+
 EventListener::EventListener() noexcept
 {
     assert(interfaces);

@@ -1,10 +1,11 @@
+#include <algorithm>
 #include <atomic>
+#include <array>
+#include <cstdint>
 #include <cstring>
-#include <list>
-#include <mutex>
+#include <memory>
 #include <unordered_map>
 
-#include "Config.h"
 #include "fnv.h"
 #include "GameData.h"
 #include "Interfaces.h"
@@ -30,8 +31,11 @@
 #include "SDK/PlayerResource.h"
 #include "SDK/Sound.h"
 #include "SDK/Steam.h"
+#include "SDK/UtlVector.h"
 #include "SDK/WeaponId.h"
 #include "SDK/WeaponData.h"
+
+#include "SDK/Constants/ClassId.h"
 
 static Matrix4x4 viewMatrix;
 static LocalPlayerData localPlayerData;

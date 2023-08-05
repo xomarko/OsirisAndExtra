@@ -1,16 +1,17 @@
 #include <algorithm>
 #include <array>
-#include <cwctype>
+#include <cwchar>
 #include <fstream>
-#include <functional>
+#include <iterator>
 #include <string>
 #include <ShlObj.h>
+#include <string_view>
 #include <unordered_map>
+#include <vector>
 #include <Windows.h>
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_internal.h"
-#include "imgui/imgui_impl_win32.h"
 #include "imgui/imgui_stdlib.h"
 
 #include "imguiCustom.h"

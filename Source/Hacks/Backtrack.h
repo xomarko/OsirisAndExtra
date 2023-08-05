@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstddef>
-#include <array>
 #include <deque>
 
 #include "../ConfigStructs.h"
