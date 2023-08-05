@@ -10,7 +10,7 @@
 #include "InputUtil.h"
 #include "GUI.h"
 
-#include "SDK/Platform.h"
+#include "SDK/Constants/Platform.h"
 
 struct Key {
     template <std::size_t N>

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Pad.h"
-#include "Platform.h"
+
+#include "Constants/Platform.h"
 
 struct SoundInfo {
     PAD(40)

@@ -12,14 +12,15 @@
 #include "Interfaces.h"
 #include "Netvars.h"
 
-#include "SDK/Constants/ClassId.h"
 #include "SDK/Client.h"
 #include "SDK/ClientClass.h"
 #include "SDK/Entity.h"
 #include "SDK/EntityList.h"
 #include "SDK/LocalPlayer.h"
-#include "SDK/Platform.h"
 #include "SDK/Recv.h"
+
+#include "SDK/Constants/ClassId.h"
+#include "SDK/Constants/Platform.h"
 
 static std::unordered_map<std::uint32_t, std::pair<recvProxy, recvProxy*>> proxies;
 

@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <Windows.h>
 
-#include "SDK/Platform.h"
+#include "SDK/Constants/Platform.h"
 
 class BaseFileSystem;
 class Client;

@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <memory>
 
-#include "../SDK/Platform.h"
+#include "../SDK/Constants/Platform.h"
 
 class VmtHook {
 public:

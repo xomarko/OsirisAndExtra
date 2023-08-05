@@ -19,11 +19,12 @@
 #include "matrix3x4.h"
 #include "MDLCache.h"
 #include "ModelInfo.h"
-#include "Platform.h"
 #include "Vector.h"
 #include "VirtualMethod.h"
 #include "WeaponData.h"
 #include "WeaponId.h"
+
+#include "Constants/Platform.h"
 
 struct AnimState;
 struct ClientClass;

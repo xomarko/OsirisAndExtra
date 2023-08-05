@@ -11,7 +11,7 @@
 #include "Hooks/VmtHook.h"
 #include "Hooks/VmtSwap.h"
 
-#include "SDK/Platform.h"
+#include "SDK/Constants/Platform.h"
 
 struct SoundInfo;
 

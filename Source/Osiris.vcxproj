@@ -267,6 +267,7 @@
     <ClInclude Include="SDK\ClientMode.h" />
 	<ClInclude Include="SDK\Constants\ClassId.h" />
 	<ClInclude Include="SDK\Constants\FrameStage.h" />
+    <ClInclude Include="SDK\Constants\Platform.h" />
 	<ClInclude Include="SDK\ClientState.h" />
     <ClInclude Include="SDK\CommandContext.h" />
     <ClInclude Include="SDK\ConVar.h" />
@@ -311,7 +312,6 @@
     <ClInclude Include="SDK\Panorama.h" />
     <ClInclude Include="SDK\ParticleCollection.h" />
     <ClInclude Include="SDK\PhysicsSurfaceProps.h" />
-    <ClInclude Include="SDK\Platform.h" />
     <ClInclude Include="SDK\PlayerResource.h" />
     <ClInclude Include="SDK\Prediction.h" />
     <ClInclude Include="SDK\PredictionCopy.h" />

@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <memory>
 
-#include "../SDK/Platform.h"
+#include "../SDK/Constants/Platform.h"
 
 class MinHook {
 public:

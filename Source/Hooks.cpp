@@ -60,7 +60,6 @@
 #include "SDK/NetworkChannel.h"
 #include "SDK/NetworkMessage.h"
 #include "SDK/Panel.h"
-#include "SDK/Platform.h"
 #include "SDK/Prediction.h"
 #include "SDK/PredictionCopy.h"
 #include "SDK/RenderContext.h"
@@ -74,6 +73,7 @@
 
 #include "SDK/Constants/ClassId.h"
 #include "SDK/Constants/FrameStage.h"
+#include "SDK/Constants/Platform.h"
 
 static LRESULT __stdcall wndProc(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {

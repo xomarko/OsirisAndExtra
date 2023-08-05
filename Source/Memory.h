@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <string>
 
-#include "SDK/Platform.h"
+#include "SDK/Constants/Platform.h"
 
 class ClientMode;
 class ClientState;

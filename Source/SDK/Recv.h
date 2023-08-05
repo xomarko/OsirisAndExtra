@@ -3,8 +3,9 @@
 #include <cstdint>
 #include <type_traits>
 
-#include "Platform.h"
 #include "Vector.h"
+
+#include "Constants/Platform.h"
 
 struct RecvProp;
 

@@ -2,10 +2,11 @@
 
 #include <type_traits>
 
-#include "Platform.h"
 #include "UtlVector.h"
 #include "Pad.h"
 #include "VirtualMethod.h"
+
+#include "Constants/Platform.h"
 
 enum CvarFlags
 {

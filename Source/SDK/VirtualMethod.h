@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-#include "Platform.h"
+#include "Constants/Platform.h"
 
 namespace VirtualMethod
 {
