@@ -1,12 +1,6 @@
 #pragma once
 
-#include <algorithm>
-#include <array>
-#include <iterator>
-#include <limits>
-#include <memory>
-#include <string>
-#include <vector>
+#include <cstdint>
 
 #include <imgui/imgui.h>
 

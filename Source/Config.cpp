@@ -11,7 +11,6 @@
 #include "nlohmann/json.hpp"
 
 #include "imgui/imgui.h"
-#include "imgui/imgui_internal.h"
 
 #include "Config.h"
 

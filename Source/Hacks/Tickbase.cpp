@@ -1,3 +1,6 @@
+#include <array>
+#include <memory>
+
 #include "../Config.h"
 #include "../Interfaces.h"
 #include "../Memory.h"

@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <array>
+
 #include "AimbotFunctions.h"
 #include "Animations.h"
 #include "Backtrack.h"

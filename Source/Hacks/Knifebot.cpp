@@ -1,3 +1,7 @@
+#include <algorithm>
+#include <functional>
+#include <vector>
+
 #include "AimbotFunctions.h"
 #include "Animations.h"
 #include "Backtrack.h"
