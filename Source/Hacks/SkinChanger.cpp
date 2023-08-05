@@ -27,13 +27,14 @@
 #include "../SDK/Entity.h"
 #include "../SDK/EntityList.h"
 #include "../SDK/FileSystem.h"
-#include "../SDK/FrameStage.h"
 #include "../SDK/GameEvent.h"
 #include "../SDK/ItemSchema.h"
 #include "../SDK/Localize.h"
 #include "../SDK/ModelInfo.h"
 #include "../SDK/Platform.h"
 #include "../SDK/WeaponId.h"
+
+#include "../SDK/Constants/FrameStage.h"
 
 /* This file is part of nSkinz by namazso, licensed under the MIT license:
 *
