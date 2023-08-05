@@ -31,7 +31,6 @@
 #include "../SDK/ItemSchema.h"
 #include "../SDK/Localize.h"
 #include "../SDK/ModelInfo.h"
-#include "../SDK/Platform.h"
 #include "../SDK/WeaponId.h"
 
 #include "../SDK/Constants/FrameStage.h"

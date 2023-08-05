@@ -1,6 +1,5 @@
 #pragma once
 
-#include <algorithm>
 #include <functional>
 #include <string>
 
@@ -20,7 +19,6 @@
 #include "matrix3x4.h"
 #include "MDLCache.h"
 #include "ModelInfo.h"
-#include "UtlVector.h"
 #include "Platform.h"
 #include "Vector.h"
 #include "VirtualMethod.h"
