@@ -5,6 +5,7 @@
 
 #include <imgui/imgui.h>
 
+#include "../ConfigStructs.h"
 #include "../Interfaces.h"
 
 #include "Sound.h"

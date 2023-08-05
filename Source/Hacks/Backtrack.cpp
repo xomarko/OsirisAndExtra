@@ -6,6 +6,8 @@
 #include "Backtrack.h"
 #include "Tickbase.h"
 
+#include "../ConfigStructs.h"
+
 #include "../SDK/Cvar.h"
 #include "../SDK/ConVar.h"
 #include "../SDK/Engine.h"
