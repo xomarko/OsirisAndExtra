@@ -1,14 +1,14 @@
-#include "../Interfaces.h"
-
 #include "AimbotFunctions.h"
 #include "AntiAim.h"
 #include "Tickbase.h"
 
+#include "../ConfigStructs.h"
+
 #include "../SDK/Engine.h"
 #include "../SDK/Entity.h"
-#include "../SDK/EntityList.h"
-#include "../SDK/NetworkChannel.h"
+#include "../SDK/LocalPlayer.h"
 #include "../SDK/UserCmd.h"
+#include "../SDK/Vector.h"
 
 bool updateLby(bool update = false) noexcept
 {

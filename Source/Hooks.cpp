@@ -42,7 +42,9 @@
 #include "Hacks/Visuals.h"
 
 #include "SDK/Client.h"
+#include "SDK/ClientClass.h"
 #include "SDK/ClientState.h"
+#include "SDK/Cvar.h"
 #include "SDK/ConVar.h"
 #include "SDK/Engine.h"
 #include "SDK/Entity.h"

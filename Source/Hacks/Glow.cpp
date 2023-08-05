@@ -1,20 +1,32 @@
+#include <algorithm>
 #include <array>
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <utility>
 
 #include <nlohmann/json.hpp>
 
-#include "../Config.h"
+#include "../ConfigStructs.h"
 #include "../Helpers.h"
+#include "../InputUtil.h"
 #include "../Interfaces.h"
 #include "../Memory.h"
 #include "../imguiCustom.h"
 
 #include "Glow.h"
 
-#include "../SDK/Entity.h"
 #include "../SDK/ClientClass.h"
+#include "../SDK/Engine.h"
+#include "../SDK/Entity.h"
+#include "../SDK/EntityList.h"
 #include "../SDK/GlowObjectManager.h"
-#include "../SDK/GlobalVars.h"
+#include "../SDK/LocalPlayer.h"
 #include "../SDK/Utils.h"
+#include "../SDK/UtlVector.h"
+#include "../SDK/Vector.h"
+
+#include "../SDK/Constants/ClassId.h"
 
 static std::vector<std::pair<int, int>> customGlowEntities;
 

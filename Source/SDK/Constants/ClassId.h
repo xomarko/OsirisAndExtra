@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Server.h"
+#include "../Server.h"
 
 enum class ClassId {
     BaseCSGrenadeProjectile = 9,

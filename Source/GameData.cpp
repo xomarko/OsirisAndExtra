@@ -2,6 +2,7 @@
 #include <cstring>
 #include <list>
 #include <mutex>
+#include <unordered_map>
 
 #include "Config.h"
 #include "fnv.h"
@@ -24,6 +25,7 @@
 #include "SDK/Localize.h"
 #include "SDK/LocalPlayer.h"
 #include "SDK/ModelInfo.h"
+#include "SDK/ModelRender.h"
 #include "SDK/NetworkChannel.h"
 #include "SDK/PlayerResource.h"
 #include "SDK/Sound.h"

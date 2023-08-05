@@ -1,14 +1,15 @@
+#include <memory>
+
 #include "../Interfaces.h"
 #include "../Memory.h"
 
 #include "EnginePrediction.h"
 
 #include "../SDK/ClientState.h"
-#include "../SDK/Engine.h"
 #include "../SDK/Entity.h"
-#include "../SDK/EntityList.h"
 #include "../SDK/GameMovement.h"
 #include "../SDK/GlobalVars.h"
+#include "../SDK/LocalPlayer.h"
 #include "../SDK/MoveHelper.h"
 #include "../SDK/Prediction.h"
 #include "../SDK/PredictionCopy.h"

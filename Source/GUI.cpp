@@ -1,9 +1,11 @@
+#include <algorithm>
 #include <array>
 #include <cwctype>
 #include <fstream>
 #include <functional>
 #include <string>
 #include <ShlObj.h>
+#include <unordered_map>
 #include <Windows.h>
 
 #include "imgui/imgui.h"
@@ -23,6 +25,7 @@
 
 #include "GUI.h"
 #include "Config.h"
+#include "ConfigStructs.h"
 #include "Helpers.h"
 #include "Hooks.h"
 #include "Interfaces.h"

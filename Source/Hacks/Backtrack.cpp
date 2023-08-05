@@ -5,8 +5,11 @@
 #include "Backtrack.h"
 #include "Tickbase.h"
 
+#include "../SDK/Cvar.h"
 #include "../SDK/ConVar.h"
+#include "../SDK/Engine.h"
 #include "../SDK/Entity.h"
+#include "../SDK/EntityList.h"
 #include "../SDK/LocalPlayer.h"
 #include "../SDK/NetworkChannel.h"
 #include "../SDK/UserCmd.h"

@@ -1,15 +1,15 @@
 #pragma once
 
+#include <algorithm>
 #include <functional>
+#include <string>
 
 #include "../Interfaces.h"
 #include "../Memory.h"
 #include "../Netvars.h"
 
 #include "AnimState.h"
-#include "ClientClass.h"
 #include "CommandContext.h"
-#include "Cvar.h"
 #include "CStudioHdr.h"
 #include "Datamap.h"
 #include "Engine.h"
@@ -20,16 +20,17 @@
 #include "matrix3x4.h"
 #include "MDLCache.h"
 #include "ModelInfo.h"
-#include "ModelRender.h"
-#include "Utils.h"
 #include "UtlVector.h"
-#include "VarMapping.h"
+#include "Platform.h"
 #include "Vector.h"
 #include "VirtualMethod.h"
 #include "WeaponData.h"
 #include "WeaponId.h"
 
 struct AnimState;
+struct ClientClass;
+struct Model;
+struct VarMap;
 
 struct AnimationLayer
 {

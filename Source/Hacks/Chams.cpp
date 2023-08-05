@@ -1,24 +1,34 @@
+#include <algorithm>
 #include <cstring>
-#include <functional>
+#include <string_view>
+#include <tuple>
+#include <unordered_map>
+#include <vector>
 
 #include "../Config.h"
 #include "../Helpers.h"
 #include "../Hooks.h"
 #include "../Interfaces.h"
+#include "../Memory.h"
 
 #include "Animations.h"
 #include "Backtrack.h"
 #include "Chams.h"
 
+#include "../SDK/ClientClass.h"
 #include "../SDK/Entity.h"
 #include "../SDK/EntityList.h"
 #include "../SDK/GlobalVars.h"
 #include "../SDK/LocalPlayer.h"
 #include "../SDK/Material.h"
 #include "../SDK/MaterialSystem.h"
+#include "../SDK/ModelRender.h"
 #include "../SDK/RenderView.h"
 #include "../SDK/StudioRender.h"
 #include "../SDK/KeyValues.h"
+#include "../SDK/Utils.h"
+
+#include "../SDK/Constants/ClassId.h"
 
 static Material* normal;
 static Material* flat;

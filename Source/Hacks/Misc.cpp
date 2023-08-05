@@ -19,9 +19,12 @@
 #include "Misc.h"
 
 #include "../SDK/Client.h"
+#include "../SDK/ClientClass.h"
 #include "../SDK/ClientMode.h"
 #include "../SDK/ConVar.h"
+#include "../SDK/Cvar.h"
 #include "../SDK/Entity.h"
+#include "../SDK/EntityList.h"
 #include "../SDK/GameEvent.h"
 #include "../SDK/GlobalVars.h"
 #include "../SDK/Input.h"
