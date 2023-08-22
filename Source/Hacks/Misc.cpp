@@ -2452,6 +2452,22 @@ void Misc::oppositeHandKnife(FrameStage stage) noexcept
 static std::vector<std::uint64_t> reportedPlayers;
 static int reportbotRound;
 
+[[nodiscard]] static std::string generateReportString()
+{
+    std::string report;
+    if (config->misc.reportbot.textAbuse)
+        report += "textabuse,";
+    if (config->misc.reportbot.griefing)
+        report += "grief,";
+    if (config->misc.reportbot.wallhack)
+        report += "wallhack,";
+    if (config->misc.reportbot.aimbot)
+        report += "aimbot,";
+    if (config->misc.reportbot.other)
+        report += "speedhack,";
+    return report;
+}
+
 void Misc::runReportbot() noexcept
 {
     if (!config->misc.reportbot.enabled)
@@ -2484,20 +2500,7 @@ void Misc::runReportbot() noexcept
         if (playerInfo.fakeplayer || std::find(reportedPlayers.cbegin(), reportedPlayers.cend(), playerInfo.xuid) != reportedPlayers.cend())
             continue;
 
-        std::string report;
-
-        if (config->misc.reportbot.textAbuse)
-            report += "textabuse,";
-        if (config->misc.reportbot.griefing)
-            report += "grief,";
-        if (config->misc.reportbot.wallhack)
-            report += "wallhack,";
-        if (config->misc.reportbot.aimbot)
-            report += "aimbot,";
-        if (config->misc.reportbot.other)
-            report += "speedhack,";
-
-        if (!report.empty()) {
+        if (const auto report = generateReportString(); !report.empty()) {
             memory->submitReport(std::to_string(playerInfo.xuid).c_str(), report.c_str());
             lastReportTime = memory->globalVars->realtime;
             reportedPlayers.push_back(playerInfo.xuid);
