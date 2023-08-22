@@ -14,6 +14,7 @@
 #include "../GUI.h"
 #include "../Helpers.h"
 #include "../GameData.h"
+#include "../ProtobufReader.h"
 
 #include "EnginePrediction.h"
 #include "Misc.h"
@@ -2579,6 +2580,46 @@ void Misc::voteRevealer(GameEvent& event) noexcept
     const char color = votedYes ? '\x06' : '\x07';
 
     memory->clientMode->getHudChat()->printf(0, " \x0C\u2022Osiris\u2022 %c%s\x01 voted %c%s\x01", isLocal ? '\x01' : color, isLocal ? "You" : entity->getPlayerName().c_str(), color, votedYes ? "Yes" : "No");
+}
+
+void Misc::onVoteStart(const void* data, int size) noexcept
+{
+    if (!config->misc.revealVotes)
+        return;
+
+    constexpr auto voteName = [](int index) {
+        switch (index) {
+        case 0: return "Kick";
+        case 1: return "Change Level";
+        case 6: return "Surrender";
+        case 13: return "Start TimeOut";
+        default: return "";
+        }
+    };
+
+    const auto reader = ProtobufReader{ static_cast<const std::uint8_t*>(data), size };
+    const auto entityIndex = reader.readInt32(2);
+
+    const auto entity = interfaces->entityList->getEntity(entityIndex);
+    if (!entity || !entity->isPlayer())
+        return;
+
+    const auto isLocal = localPlayer && entity == localPlayer.get();
+
+    const auto voteType = reader.readInt32(3);
+    memory->clientMode->getHudChat()->printf(0, " \x0C\u2022Osiris\u2022 %c%s\x01 call vote (\x06%s\x01)", isLocal ? '\x01' : '\x06', isLocal ? "You" : entity->getPlayerName().c_str(), voteName(voteType));
+}
+
+void Misc::onVotePass() noexcept
+{
+    if (config->misc.revealVotes)
+        memory->clientMode->getHudChat()->printf(0, " \x0C\u2022Osiris\u2022\x01 vote\x06 PASS");
+}
+
+void Misc::onVoteFailed() noexcept
+{
+    if (config->misc.revealVotes)
+        memory->clientMode->getHudChat()->printf(0, " \x0C\u2022Osiris\u2022\x01 vote\x07 FAILED");
 }
 
 // ImGui::ShadeVertsLinearColorGradientKeepAlpha() modified to do interpolation in HSV

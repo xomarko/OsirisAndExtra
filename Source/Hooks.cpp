@@ -1504,6 +1504,13 @@ static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, int mes
             return true;
     }
 
+    else if (messageType == CS_UM_VoteStart)
+        Misc::onVoteStart(data, secondArgument);
+    else if (messageType == CS_UM_VoteFailed)
+        Misc::onVoteFailed();
+    else if (messageType == CS_UM_VotePass)
+        Misc::onVotePass();
+
     return original(thisPointer, messageType, argument, secondArgument, data);
 }
 
