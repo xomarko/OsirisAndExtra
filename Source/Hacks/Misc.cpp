@@ -2468,6 +2468,11 @@ static int reportbotRound;
     return report;
 }
 
+[[nodiscard]] static bool isPlayerReported(std::uint64_t xuid)
+{
+    return std::ranges::find(std::as_const(reportedPlayers), xuid) != reportedPlayers.cend();
+}
+
 void Misc::runReportbot() noexcept
 {
     if (!config->misc.reportbot.enabled)
@@ -2497,7 +2502,7 @@ void Misc::runReportbot() noexcept
         if (!interfaces->engine->getPlayerInfo(i, playerInfo))
             continue;
 
-        if (playerInfo.fakeplayer || std::find(reportedPlayers.cbegin(), reportedPlayers.cend(), playerInfo.xuid) != reportedPlayers.cend())
+        if (playerInfo.fakeplayer || isPlayerReported(playerInfo.xuid))
             continue;
 
         if (const auto report = generateReportString(); !report.empty()) {
