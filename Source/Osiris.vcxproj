@@ -255,6 +255,7 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Netvars.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ProtobufReader.h" />
     <ClInclude Include="Resources\avatar_ct.h" />
     <ClInclude Include="Resources\avatar_tt.h" />
     <ClInclude Include="Resources\Resource.h" />
@@ -265,10 +266,10 @@
     <ClInclude Include="SDK\checksum_crc.h" />
     <ClInclude Include="SDK\Client.h" />
     <ClInclude Include="SDK\ClientMode.h" />
-	<ClInclude Include="SDK\Constants\ClassId.h" />
-	<ClInclude Include="SDK\Constants\FrameStage.h" />
+    <ClInclude Include="SDK\Constants\ClassId.h" />
+    <ClInclude Include="SDK\Constants\FrameStage.h" />
     <ClInclude Include="SDK\Constants\Platform.h" />
-	<ClInclude Include="SDK\ClientState.h" />
+    <ClInclude Include="SDK\ClientState.h" />
     <ClInclude Include="SDK\CommandContext.h" />
     <ClInclude Include="SDK\ConVar.h" />
     <ClInclude Include="SDK\CStudioHdr.h" />
