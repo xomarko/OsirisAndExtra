@@ -1,24 +1,15 @@
-if (NOT WIN32)
-  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wfatal-errors")
-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fno-rtti")
-endif()
-
 add_compile_options($<$<AND:$<CONFIG:Release>,$<CXX_COMPILER_ID:GNU>,$<C_COMPILER_ID:GNU>>:-s>)
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} --no-gnu-unique")
 endif()
 	
-if (MSVC)
-  add_compile_options(/MP)
-endif()
+add_compile_options(/MP)
 
 add_library(OsirisOBJ OBJECT "")
 set_target_properties(OsirisOBJ PROPERTIES CXX_VISIBILITY_PRESET hidden C_VISIBILITY_PRESET hidden)
 
-if (WIN32)
-  target_compile_definitions(OsirisOBJ PUBLIC NOMINMAX)
-endif()
+target_compile_definitions(OsirisOBJ PUBLIC NOMINMAX)
 
 add_subdirectory(Dependencies)
 
@@ -27,24 +18,16 @@ target_precompile_headers(OsirisOBJ PRIVATE "${CMAKE_SOURCE_DIR}/Source/pch.h")
 target_include_directories(OsirisOBJ PUBLIC "${CMAKE_SOURCE_DIR}/Source")
 target_include_directories(OsirisOBJ PUBLIC "${CMAKE_SOURCE_DIR}/Dependencies")
 
-if (NOT WIN32)
-  target_compile_options(OsirisOBJ PRIVATE -flto)
-  target_link_options(OsirisOBJ PUBLIC -flto LINKER:--no-undefined)
-else()
-  target_compile_definitions(OsirisOBJ PRIVATE _USE_MATH_DEFINES)
-  target_compile_options(OsirisOBJ PRIVATE /utf-8)
-  add_subdirectory(Source/Resources/Shaders)
-  add_dependencies(OsirisOBJ Shaders)
-endif()
+target_compile_definitions(OsirisOBJ PRIVATE _USE_MATH_DEFINES)
+target_compile_options(OsirisOBJ PRIVATE /utf-8)
+add_subdirectory(Source/Resources/Shaders)
+add_dependencies(OsirisOBJ Shaders)
+
 
 add_library(Osiris SHARED "${CMAKE_SOURCE_DIR}/Source/Osiris.cpp")
 target_link_libraries(Osiris PUBLIC OsirisOBJ)
 
-if (NOT WIN32)
-  target_link_options(Osiris PRIVATE -flto)
-else()
-  target_link_options(Osiris PRIVATE /ENTRY:DllEntryPoint)
-endif()
+target_link_options(Osiris PRIVATE /ENTRY:DllEntryPoint)
 
 target_sources(OsirisOBJ PRIVATE
   AntiDetection.cpp
