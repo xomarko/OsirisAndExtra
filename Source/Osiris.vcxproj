@@ -271,6 +271,7 @@
     <ClInclude Include="SDK\Constants\Platform.h" />
     <ClInclude Include="SDK\ClientState.h" />
     <ClInclude Include="SDK\CommandContext.h" />
+    <ClInclude Include="SDK\Constants\UserMessages.h" />
     <ClInclude Include="SDK\ConVar.h" />
     <ClInclude Include="SDK\CStudioHdr.h" />
     <ClInclude Include="SDK\DebugOverlay.h" />
