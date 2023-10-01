@@ -28,7 +28,6 @@ private:
     void renderGlowWindow() noexcept;
     void renderStreamProofESPWindow() noexcept;
     void renderVisualsWindow() noexcept;
-    void renderSkinChangerWindow() noexcept;
     void renderMiscWindow() noexcept;
     void renderConfigWindow() noexcept;
 
