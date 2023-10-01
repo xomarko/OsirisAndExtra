@@ -5,17 +5,11 @@
 #include "Pad.h"
 #include "UtlMap.h"
 #include "UtlMemory.h"
+#include "UtlString.h"
 #include "UtlVector.h"
 #include "VirtualMethod.h"
 
 enum class WeaponId : short;
-
-struct UtlString {
-    UtlMemory<char> buffer;
-    int length;
-
-    const char* data() const noexcept { return buffer.memory; }
-};
 
 struct PaintKit {
     int id;
