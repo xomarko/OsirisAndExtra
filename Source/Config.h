@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "Hacks/SkinChanger.h"
+#include "InventoryChanger/SkinChanger.h"
 
 #include "ConfigStructs.h"
 #include "InputUtil.h"

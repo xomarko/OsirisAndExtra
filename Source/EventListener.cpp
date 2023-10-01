@@ -11,8 +11,9 @@
 
 #include "Hacks/Misc.h"
 #include "Hacks/Resolver.h"
-#include "Hacks/SkinChanger.h"
 #include "Hacks/Visuals.h"
+
+#include "InventoryChanger/SkinChanger.h"
 
 #include "SDK/UtlVector.h"
 

@@ -19,9 +19,10 @@
 #include "Hacks/Backtrack.h"
 #include "Hacks/Glow.h"
 #include "Hacks/Misc.h"
-#include "Hacks/SkinChanger.h"
 #include "Hacks/Sound.h"
 #include "Hacks/Visuals.h"
+
+#include "InventoryChanger/SkinChanger.h"
 
 #include "GUI.h"
 #include "Config.h"

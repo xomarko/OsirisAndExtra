@@ -39,6 +39,9 @@
     <Filter Include="SDK\Constants">
       <UniqueIdentifier>{8be3d1dd-f7e9-40b3-93ad-3567482d988a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InventoryChanger">
+      <UniqueIdentifier>{af5c8cfd-1522-4cd0-ac9d-90acaead2a7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI.cpp">
@@ -75,9 +78,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hacks\Visuals.cpp">
-      <Filter>Hacks</Filter>
-    </ClCompile>
-    <ClCompile Include="Hacks\SkinChanger.cpp">
       <Filter>Hacks</Filter>
     </ClCompile>
     <ClCompile Include="Hacks\Backtrack.cpp">
@@ -278,6 +278,9 @@
     <ClCompile Include="ConfigStructs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryChanger\SkinChanger.cpp">
+      <Filter>InventoryChanger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h">
@@ -393,9 +396,6 @@
     </ClInclude>
     <ClInclude Include="SDK\GameUI.h">
       <Filter>SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="Hacks\SkinChanger.h">
-      <Filter>Hacks</Filter>
     </ClInclude>
     <ClInclude Include="Hacks\Backtrack.h">
       <Filter>Hacks</Filter>
@@ -699,6 +699,9 @@
     </ClInclude>
     <ClInclude Include="SDK\Constants\UserMessages.h">
       <Filter>SDK\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\SkinChanger.h">
+      <Filter>InventoryChanger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

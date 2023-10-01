@@ -35,11 +35,12 @@
 #include "Hacks/Misc.h"
 #include "Hacks/Ragebot.h"
 #include "Hacks/Resolver.h"
-#include "Hacks/SkinChanger.h"
 #include "Hacks/Sound.h"
 #include "Hacks/Tickbase.h"
 #include "Hacks/Triggerbot.h"
 #include "Hacks/Visuals.h"
+
+#include "InventoryChanger/SkinChanger.h"
 
 #include "SDK/Client.h"
 #include "SDK/ClientClass.h"
