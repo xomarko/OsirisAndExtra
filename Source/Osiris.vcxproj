@@ -157,7 +157,7 @@
     <ClCompile Include="Hacks\Legitbot.cpp" />
     <ClCompile Include="Hacks\Ragebot.cpp" />
     <ClCompile Include="Hacks\Resolver.cpp" />
-    <ClCompile Include="InventoryChanger\SkinChanger.cpp" />
+    <ClCompile Include="InventoryChanger\InventoryChanger.cpp" />
     <ClCompile Include="Hacks\Sound.cpp" />
     <ClCompile Include="Hacks\StreamProofESP.cpp" />
     <ClCompile Include="Hacks\Tickbase.cpp" />

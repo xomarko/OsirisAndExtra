@@ -278,7 +278,7 @@
     <ClCompile Include="ConfigStructs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryChanger\SkinChanger.cpp">
+    <ClCompile Include="InventoryChanger\InventoryChanger.cpp">
       <Filter>InventoryChanger</Filter>
     </ClCompile>
   </ItemGroup>
