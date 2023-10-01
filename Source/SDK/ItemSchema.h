@@ -10,7 +10,7 @@
 
 enum class WeaponId : short;
 
-struct String {
+struct UtlString {
     UtlMemory<char> buffer;
     int length;
 
@@ -19,13 +19,13 @@ struct String {
 
 struct PaintKit {
     int id;
-    String name;
-    String description;
-    String itemName;
-    String sameNameFamilyAggregate;
-    String pattern;
-    String normal;
-    String logoMaterial;
+    UtlString name;
+    UtlString description;
+    UtlString itemName;
+    UtlString sameNameFamilyAggregate;
+    UtlString pattern;
+    UtlString normal;
+    UtlString logoMaterial;
     bool baseDiffuseOverride;
     int rarity;
 };
@@ -33,11 +33,11 @@ struct PaintKit {
 struct StickerKit {
     int id;
     int rarity;
-    String name;
-    String description;
-    String itemName;
-    PAD(2 * sizeof(String))
-    String inventoryImage;
+    UtlString name;
+    UtlString description;
+    UtlString itemName;
+    PAD(2 * sizeof(UtlString))
+    UtlString inventoryImage;
 };
 
 class EconItemDefinition {
@@ -100,10 +100,10 @@ struct EconItemQualityDefinition {
 };
 
 struct AlternateIconData {
-    String simpleName;
-    String largeSimpleName;
-    String iconURLSmall;
-    String iconURLLarge;
+    UtlString simpleName;
+    UtlString largeSimpleName;
+    UtlString iconURLSmall;
+    UtlString iconURLLarge;
     PAD(28)
 };
 
