@@ -322,8 +322,6 @@ public:
         ColorToggle console{ 1.0f, 1.0f, 1.0f, 1.0f };
     } visuals;
 
-    std::array<item_setting, 36> skinChanger;
-
     struct Misc {
         Misc() { clanTag[0] = '\0'; name[0] = '\0'; menuKey.keyMode = KeyMode::Toggle; }
 
