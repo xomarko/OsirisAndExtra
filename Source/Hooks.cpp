@@ -40,7 +40,7 @@
 #include "Hacks/Triggerbot.h"
 #include "Hacks/Visuals.h"
 
-#include "InventoryChanger/SkinChanger.h"
+#include "InventoryChanger/InventoryChanger.h"
 
 #include "SDK/Client.h"
 #include "SDK/ClientClass.h"

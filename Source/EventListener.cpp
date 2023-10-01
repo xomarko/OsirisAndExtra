@@ -13,7 +13,7 @@
 #include "Hacks/Resolver.h"
 #include "Hacks/Visuals.h"
 
-#include "InventoryChanger/SkinChanger.h"
+#include "InventoryChanger/InventoryChanger.h"
 
 #include "SDK/UtlVector.h"
 

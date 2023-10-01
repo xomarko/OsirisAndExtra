@@ -22,7 +22,7 @@
 #include "Hacks/Sound.h"
 #include "Hacks/Visuals.h"
 
-#include "InventoryChanger/SkinChanger.h"
+#include "InventoryChanger/InventoryChanger.h"
 
 #include "GUI.h"
 #include "Config.h"

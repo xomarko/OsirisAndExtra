@@ -17,7 +17,7 @@
 #include "../Texture.h"
 #include "../Helpers.h"
 
-#include "SkinChanger.h"
+#include "InventoryChanger.h"
 
 #include "../SDK/Client.h"
 #include "../SDK/ClientClass.h"
