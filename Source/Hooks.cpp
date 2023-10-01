@@ -74,6 +74,7 @@
 #include "SDK/Constants/ClassId.h"
 #include "SDK/Constants/FrameStage.h"
 #include "SDK/Constants/Platform.h"
+#include "SDK/Constants/UserMessages.h"
 
 static LRESULT __stdcall wndProc(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
@@ -1494,24 +1495,24 @@ static void* __stdcall getClientModelRenderableHook() noexcept
     return nullptr;
 }
 
-static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, int messageType, int argument, int secondArgument, void* data) noexcept
+static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, UserMessageType type, int argument, int secondArgument, void* data) noexcept
 {
-    static auto original = hooks->client.getOriginal<bool, 38>(messageType, argument, secondArgument, data);
+    static auto original = hooks->client.getOriginal<bool, 38>(type, argument, secondArgument, data);
 
-    if (messageType == CS_UM_TextMsg || messageType == CS_UM_HudMsg || messageType == CS_UM_SayText)
+    if (type == UserMessageType::TextMsg || type == UserMessageType::HudMsg || type == UserMessageType::SayText)
     {
         if (config->misc.adBlock && !(*(memory->gameRules))->isValveDS())
             return true;
     }
 
-    else if (messageType == CS_UM_VoteStart)
+    else if (type == UserMessageType::VoteStart)
         Misc::onVoteStart(data, secondArgument);
-    else if (messageType == CS_UM_VoteFailed)
+    else if (type == UserMessageType::VoteFailed)
         Misc::onVoteFailed();
-    else if (messageType == CS_UM_VotePass)
+    else if (type == UserMessageType::VotePass)
         Misc::onVotePass();
 
-    return original(thisPointer, messageType, argument, secondArgument, data);
+    return original(thisPointer, type, argument, secondArgument, data);
 }
 
 static void __fastcall performScreenOverlayHook(void* thisPointer, void* edx, int x, int y, int width, int height) noexcept
