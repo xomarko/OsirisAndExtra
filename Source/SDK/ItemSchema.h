@@ -3,19 +3,11 @@
 #include <cstddef>
 
 #include "Pad.h"
+#include "UtlMemory.h"
 #include "UtlVector.h"
 #include "VirtualMethod.h"
 
 enum class WeaponId : short;
-
-template <typename T>
-struct UtlMemory {
-    T& operator[](int i) const noexcept { return memory[i]; };
-
-    T* memory;
-    int allocationCount;
-    int growSize;
-};
 
 template <typename Key, typename Value>
 struct Node {
