@@ -40,7 +40,14 @@ EventListener::EventListener() noexcept
     interfaces->gameEventManager->addListener(this, "player_death");
     interfaces->gameEventManager->addListener(this, "vote_cast");
 
+    interfaces->gameEventManager->addListener(this, "round_mvp");
+
     if (const auto desc = memory->getEventDescriptor(interfaces->gameEventManager, "player_death", nullptr))
+        std::swap(desc->listeners[0], desc->listeners[desc->listeners.size - 1]);
+    else
+        assert(false);
+
+    if (const auto desc = memory->getEventDescriptor(interfaces->gameEventManager, "round_mvp", nullptr))
         std::swap(desc->listeners[0], desc->listeners[desc->listeners.size - 1]);
     else
         assert(false);
@@ -67,8 +74,9 @@ void EventListener::fireGameEvent(GameEvent* event)
         Misc::purchaseList(event);
         break;
     case fnv::hash("player_death"):
-        SkinChanger::updateStatTrak(*event);
-        SkinChanger::overrideHudIcon(*event);
+        auto& inventoryChanger = inventory_changer::InventoryChanger::instance();
+        inventoryChanger.updateStatTrak(*event);
+        inventoryChanger.overrideHudIcon(*event);
         Misc::killfeedChanger(*event);
         Misc::killMessage(*event);
         Misc::killSound(*event);
@@ -102,6 +110,9 @@ void EventListener::fireGameEvent(GameEvent* event)
         break;
     case fnv::hash("inferno_expire"):
         Visuals::molotovExtinguishEvent(event);
+        break;
+    case fnv::hash("round_mvp"):
+        inventory_changer::InventoryChanger::instance().onRoundMVP(*event);
         break;
     }
 }

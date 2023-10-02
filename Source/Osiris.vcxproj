@@ -157,6 +157,11 @@
     <ClCompile Include="Hacks\Legitbot.cpp" />
     <ClCompile Include="Hacks\Ragebot.cpp" />
     <ClCompile Include="Hacks\Resolver.cpp" />
+    <ClCompile Include="InventoryChanger\Backend\Request\RequestHandler.cpp" />
+    <ClCompile Include="InventoryChanger\GameIntegration\CrateLoot.cpp" />
+    <ClCompile Include="InventoryChanger\GameIntegration\Inventory.cpp" />
+    <ClCompile Include="InventoryChanger\GameIntegration\Items.cpp" />
+    <ClCompile Include="InventoryChanger\GameItems\Storage.cpp" />
     <ClCompile Include="InventoryChanger\InventoryChanger.cpp" />
     <ClCompile Include="Hacks\Sound.cpp" />
     <ClCompile Include="Hacks\StreamProofESP.cpp" />
@@ -169,6 +174,11 @@
     <ClCompile Include="Hooks\VmtSwap.cpp" />
     <ClCompile Include="imguiCustom.cpp" />
     <ClCompile Include="InputUtil.cpp" />
+    <ClCompile Include="InventoryChanger\InventoryConfig.cpp" />
+    <ClCompile Include="InventoryChanger\Inventory\StructsFromJson.cpp" />
+    <ClCompile Include="InventoryChanger\ItemGenerator\ItemGenerator.cpp" />
+    <ClCompile Include="InventoryChanger\ItemGenerator\TournamentMatches.cpp" />
+    <ClCompile Include="InventoryChanger\WeaponNames.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Netvars.cpp" />
     <ClCompile Include="Osiris.cpp" />
@@ -191,6 +201,7 @@
     <ClCompile Include="SDK\AnimState.cpp" />
     <ClCompile Include="SDK\BitBuffer.cpp" />
     <ClCompile Include="SDK\checksum_crc.cpp" />
+    <ClCompile Include="SDK\EconItemView.cpp" />
     <ClCompile Include="SDK\EngineTrace.cpp" />
     <ClCompile Include="SDK\Entity.cpp" />
     <ClCompile Include="SDK\GlobalVars.cpp" />
@@ -240,6 +251,44 @@
     <ClInclude Include="Hacks\Misc.h" />
     <ClInclude Include="Hacks\Ragebot.h" />
     <ClInclude Include="Hacks\Resolver.h" />
+    <ClInclude Include="InventoryChanger\Backend\BackendSimulator.h" />
+    <ClInclude Include="InventoryChanger\Backend\Item.h" />
+    <ClInclude Include="InventoryChanger\Backend\ItemIDMap.h" />
+    <ClInclude Include="InventoryChanger\Backend\Items.h" />
+    <ClInclude Include="InventoryChanger\Backend\Loadout.h" />
+    <ClInclude Include="InventoryChanger\Backend\PickEm.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\InventoryHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemActivationHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemModificationHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemRemovalHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\LoadoutHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\PickEmHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestBuilder.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestTypes.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\StorageUnitHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Request\XRayScannerHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\Response.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\ItemInResponse.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseAccumulator.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseHandler.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseQueue.h" />
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseTypes.h" />
+    <ClInclude Include="InventoryChanger\Backend\StorageUnitManager.h" />
+    <ClInclude Include="InventoryChanger\Backend\XRayScanner.h" />
+    <ClInclude Include="InventoryChanger\EconRarities.h" />
+    <ClInclude Include="InventoryChanger\GameIntegration\CrateLoot.h" />
+    <ClInclude Include="InventoryChanger\GameIntegration\Inventory.h" />
+    <ClInclude Include="InventoryChanger\GameIntegration\Items.h" />
+    <ClInclude Include="InventoryChanger\GameIntegration\Misc.h" />
+    <ClInclude Include="InventoryChanger\GameItems\CrateLoot.h" />
+    <ClInclude Include="InventoryChanger\GameItems\CrateLootLookup.h" />
+    <ClInclude Include="InventoryChanger\GameItems\Enums.h" />
+    <ClInclude Include="InventoryChanger\GameItems\Item.h" />
+    <ClInclude Include="InventoryChanger\GameItems\ItemSorter.h" />
+    <ClInclude Include="InventoryChanger\GameItems\Lookup.h" />
+    <ClInclude Include="InventoryChanger\GameItems\Storage.h" />
+    <ClInclude Include="InventoryChanger\GameItems\Structs.h" />
     <ClInclude Include="InventoryChanger\InventoryChanger.h" />
     <ClInclude Include="Hacks\Sound.h" />
     <ClInclude Include="Hacks\StreamProofESP.h" />
@@ -252,6 +301,18 @@
     <ClInclude Include="Hooks\VmtSwap.h" />
     <ClInclude Include="imguiCustom.h" />
     <ClInclude Include="InputUtil.h" />
+    <ClInclude Include="InventoryChanger\InventoryConfig.h" />
+    <ClInclude Include="InventoryChanger\Inventory\Item.h" />
+    <ClInclude Include="InventoryChanger\Inventory\Structs.h" />
+    <ClInclude Include="InventoryChanger\Inventory\StructsFromJson.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\AttributeGenerator.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\DefaultGenerator.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\DropGenerator.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\ItemGenerator.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\TournamentMatches.h" />
+    <ClInclude Include="InventoryChanger\ItemGenerator\Utils.h" />
+    <ClInclude Include="InventoryChanger\WeaponNames.h" />
+    <ClInclude Include="JsonForward.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Netvars.h" />
     <ClInclude Include="pch.h" />
@@ -271,10 +332,14 @@
     <ClInclude Include="SDK\Constants\Platform.h" />
     <ClInclude Include="SDK\ClientState.h" />
     <ClInclude Include="SDK\CommandContext.h" />
+    <ClInclude Include="SDK\Constants\ProPlayer.h" />
+    <ClInclude Include="SDK\Constants\Tournament.h" />
+    <ClInclude Include="SDK\Constants\TournamentTeam.h" />
     <ClInclude Include="SDK\Constants\UserMessages.h" />
     <ClInclude Include="SDK\ConVar.h" />
     <ClInclude Include="SDK\CStudioHdr.h" />
     <ClInclude Include="SDK\DebugOverlay.h" />
+    <ClInclude Include="SDK\EconItemView.h" />
     <ClInclude Include="SDK\EngineTrace.h" />
     <ClInclude Include="SDK\Entity.h" />
     <ClInclude Include="SDK\ClientClass.h" />
@@ -342,6 +407,8 @@
     <ClInclude Include="SDK\WeaponId.h" />
     <ClInclude Include="SDK\WeaponData.h" />
     <ClInclude Include="SDK\WeaponSystem.h" />
+    <ClInclude Include="SmallVariant.h" />
+    <ClInclude Include="SortFilter.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Threading.h" />
   </ItemGroup>
@@ -392,12 +459,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Dependencies\freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Dependencies\range-v3;$(SolutionDir)Dependencies;$(ProjectDir)</IncludePath>
+	  <IncludePath>$(SolutionDir)Dependencies\freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Dependencies\range-v3;$(SolutionDir)Dependencies;$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>$(SolutionDir)Dependencies\freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Dependencies\range-v3;$(SolutionDir)Dependencies;$(ProjectDir)</IncludePath>
+	  <IncludePath>$(SolutionDir)Dependencies\freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Dependencies\range-v3;$(SolutionDir)Dependencies;$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

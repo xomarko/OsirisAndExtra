@@ -1,14 +1,21 @@
 #pragma once
 
-#include <array>
+#include <concepts>
+#include <cwctype>
+#include <mutex>
 #include <numbers>
+#include <random>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "imgui/imgui.h"
 
 #include "Config.h"
 
+#include "SDK/WeaponId.h"
+
+struct Color3;
 struct Color4;
 struct Vector;
 
@@ -67,7 +74,6 @@ namespace Helpers
     }
 
     std::wstring toWideString(const std::string& str) noexcept;
-    std::wstring toUpper(std::wstring str) noexcept;
 
     std::array<float, 3U> rgbToHsv(float r, float g, float b) noexcept;
     std::array<float, 3U> hsvToRgb(float h, float s, float v) noexcept;
@@ -82,4 +88,117 @@ namespace Helpers
     constexpr auto rad2deg(float radians) noexcept { return radians * (180.0f / std::numbers::pi_v<float>); }
 
     std::size_t calculateVmtLength(std::uintptr_t* vmt) noexcept;
+
+    constexpr auto isKnife(WeaponId id) noexcept
+    {
+        return (id >= WeaponId::Bayonet && id <= WeaponId::SkeletonKnife) || id == WeaponId::KnifeT || id == WeaponId::Knife;
+    }
+
+    constexpr auto isSouvenirToken(WeaponId id) noexcept
+    {
+        switch (id) {
+        case WeaponId::Berlin2019SouvenirToken:
+        case WeaponId::Stockholm2021SouvenirToken:
+        case WeaponId::Antwerp2022SouvenirToken:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    constexpr auto bronzeEventCoinFromViewerPass(WeaponId id) noexcept
+    {
+        switch (id) {
+        case WeaponId::Katowice2019ViewerPass: return WeaponId::Katowice2019BronzeCoin;
+        case WeaponId::Berlin2019ViewerPass:
+        case WeaponId::Berlin2019ViewerPassWith3Tokens: return WeaponId::Berlin2019BronzeCoin;
+        case WeaponId::Stockholm2021ViewerPass:
+        case WeaponId::Stockholm2021ViewerPassWith3Tokens: return WeaponId::Stockholm2021BronzeCoin;
+        case WeaponId::Antwerp2022ViewerPass:
+        case WeaponId::Antwerp2022ViewerPassWith3Tokens: return WeaponId::Antwerp2022BronzeCoin;
+        default: return WeaponId::None;
+        }
+    }
+
+    constexpr std::uint8_t numberOfTokensWithViewerPass(WeaponId id) noexcept
+    {
+        switch (id) {
+        case WeaponId::Berlin2019ViewerPassWith3Tokens:
+        case WeaponId::Stockholm2021ViewerPassWith3Tokens:
+        case WeaponId::Antwerp2022ViewerPassWith3Tokens: return 3;
+        default: return 0;
+        }
+    }
+
+    [[nodiscard]] constexpr auto isMP5LabRats(WeaponId weaponID, int paintKit) noexcept
+    {
+        return weaponID == WeaponId::Mp5sd && paintKit == 800;
+    }
+
+    class RandomGenerator {
+    public:
+        template <std::integral T>
+        [[nodiscard]] static T random(T min, T max) noexcept
+        {
+            std::scoped_lock lock{ mutex };
+            return std::uniform_int_distribution{ min, max }(gen);
+        }
+
+        template <std::floating_point T>
+        [[nodiscard]] static T random(T min, T max) noexcept
+        {
+            std::scoped_lock lock{ mutex };
+            return std::uniform_real_distribution{ min, max }(gen);
+        }
+
+        template <typename T>
+        [[nodiscard]] static std::enable_if_t<std::is_enum_v<T>, T> random(T min, T max) noexcept
+        {
+            return static_cast<T>(random(static_cast<std::underlying_type_t<T>>(min), static_cast<std::underlying_type_t<T>>(max)));
+        }
+    private:
+        inline static std::mt19937 gen{ std::random_device{}() };
+        inline static std::mutex mutex;
+    };
+
+    template <typename T>
+    [[nodiscard]] T random(T min, T max) noexcept
+    {
+        return RandomGenerator::random(min, max);
+    }   
+
+    class ToUpperConverter {
+    public:
+        std::wstring_view toUpper(std::wstring_view string)
+        {
+            assert(string.length() < buffer.size());
+            std::size_t length = 0;
+            for (auto c : string)
+                buffer[length++] = toUpper(c);
+            buffer[length] = '\0';
+            return { buffer.data(), length };
+        }
+
+    private:
+        wchar_t toUpper(wchar_t c)
+        {
+            if (c >= 'a' && c <= 'z') {
+                return c - ('a' - 'A');
+            }
+            else if (c > 127) {
+                if (const auto it = cache.find(c); it != cache.end()) {
+                    return it->second;
+                }
+                else {
+                    const auto upper = std::towupper(c);
+                    cache.emplace(c, upper);
+                    return upper;
+                }
+            }
+            return c;
+        }
+
+        std::unordered_map<wchar_t, wchar_t> cache;
+        std::array<wchar_t, 4096> buffer;
+    };
 }

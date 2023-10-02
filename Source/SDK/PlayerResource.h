@@ -17,7 +17,7 @@ class PlayerResource {
 public:
     auto getIPlayerResource() noexcept
     {
-        return reinterpret_cast<IPlayerResource*>(uintptr_t(this) + 0x9D8);
+        return reinterpret_cast<IPlayerResource*>(std::uintptr_t(this) + 0x9D8);
     }
 
     NETVAR(bombsiteCenterA, "CCSPlayerResource", "m_bombsiteCenterA", Vector)
@@ -30,6 +30,8 @@ public:
     NETVAR(deaths, "CCSPlayerResource", "m_iDeaths", int[65])
     NETVAR(ping, "CCSPlayerResource", "m_iPing", int[65])
     NETVAR(playerC4Index, "CCSPlayerResource", "m_iPlayerC4", int)
+    NETVAR(musicID, "CCSPlayerResource", "m_nMusicID", int[65])
+    NETVAR(activeCoinRank, "CCSPlayerResource", "m_nActiveCoinRank", int[65])
 
     const char* getClan(int idx) noexcept
     {

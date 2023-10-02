@@ -79,8 +79,11 @@ public:
     HookType clientMode;
     HookType clientState;
     HookType engine;
+    HookType inventory;
+    HookType inventoryManager;
     HookType gameMovement;
     HookType modelRender;
+    HookType panoramaMarshallHelper;
     HookType sound;
     HookType surface;
     HookType viewRender;

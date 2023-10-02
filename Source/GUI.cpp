@@ -2034,7 +2034,7 @@ void GUI::renderConfigWindow() noexcept
         if (currentConfig != -1) {
             if (ImGui::Button("Load selected", { 100.0f, 25.0f })) {
                 config->load(currentConfig, incrementalLoad);
-                SkinChanger::scheduleHudUpdate();
+                InventoryChanger::scheduleHudUpdate();
                 Misc::updateClanTag(true);
             }
             if (ImGui::Button("Save selected", { 100.0f, 25.0f }))
@@ -2286,7 +2286,7 @@ void GUI::renderGuiStyle() noexcept
                                     break;
                                 case 5:
                                     //Skins
-                                    //renderSkinChangerWindow();
+                                    inventory_changer::InventoryChanger::instance().drawGUI();
                                     break;
                                 default:
                                     break;

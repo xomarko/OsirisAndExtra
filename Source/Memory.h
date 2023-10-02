@@ -9,18 +9,26 @@
 #include "SDK/Constants/Platform.h"
 
 class ClientMode;
+template <typename T> class ClientSharedObjectCache;
+class CSPlayerInventory;
+class EconItem;
+class EconItemAttributeDefinition;
+class EconItemView;
 class ClientState;
 class Entity;
 class GameEventDescriptor;
 class GameEventManager;
 class Input;
 class ItemSystem;
+class InventoryManager;
 class KeyValues;
 class MemAlloc;
 class MoveHelper;
 class MoveData;
+class PanoramaMarshallHelper;
 class PlantedC4;
 class PlayerResource;
+template <typename T> class SharedObjectTypeCache;
 class ViewRender;
 class ViewRenderBeams;
 class WeaponSystem;
@@ -83,7 +91,7 @@ public:
     void(__thiscall* keyValuesSetString)(KeyValues* keyValues, const char* value);
     WeaponSystem* weaponSystem;
     std::add_pointer_t<const char** __fastcall(const char* playerModelName)> getPlayerViewmodelArmConfigForPlayerModel;
-    GameEventDescriptor* (__thiscall* getEventDescriptor)(GameEventManager* _this, const char* name, int* cookie);
+    GameEventDescriptor* (__thiscall* getEventDescriptor)(GameEventManager* thisptr, const char* name, int* cookie);
     ActiveChannels* activeChannels;
     Channel* channels;
     PlayerResource** playerResource;
@@ -94,6 +102,34 @@ public:
     std::uintptr_t money;
     std::uintptr_t demoFileEndReached;
     Entity** gameRules;
+    InventoryManager* inventoryManager;
+    std::add_pointer_t<EconItem* __stdcall()> createEconItemSharedObject;
+    bool(__thiscall* addEconItem)(CSPlayerInventory* thisptr, EconItem* item, bool updateAckFile, bool writeAckFile, bool checkForNewItems);
+    void(__thiscall* clearInventoryImageRGBA)(EconItemView* itemView);
+    PanoramaMarshallHelper* panoramaMarshallHelper;
+    std::uintptr_t setStickerToolSlotGetArgAsNumberReturnAddress;
+    std::uintptr_t wearItemStickerGetArgAsStringReturnAddress;
+    std::uintptr_t setNameToolStringGetArgAsStringReturnAddress;
+    std::uintptr_t clearCustomNameGetArgAsStringReturnAddress;
+    std::uintptr_t deleteItemGetArgAsStringReturnAddress;
+    std::uintptr_t setStatTrakSwapToolItemsGetArgAsStringReturnAddress1;
+    std::uintptr_t acknowledgeNewItemByItemIDGetArgAsStringReturnAddress;
+    std::uintptr_t setItemAttributeValueAsyncGetArgAsStringReturnAddress;
+    std::uintptr_t setMyPredictionUsingItemIdGetNumArgsReturnAddress;
+    std::uintptr_t getMyPredictionTeamIDGetArgAsStringReturnAddress;
+    std::uintptr_t setInventorySortAndFiltersGetArgAsStringReturnAddress;
+    std::uintptr_t getInventoryCountSetResultIntReturnAddress;
+    std::uintptr_t performItemCasketTransactionGetArgAsStringReturnAddress;
+
+    std::add_pointer_t<EconItemView* __cdecl(std::uint64_t itemID)> findOrCreateEconItemViewForItemID;
+    void* (__thiscall* getInventoryItemByItemID)(CSPlayerInventory* thisptr, std::uint64_t itemID);
+    std::uintptr_t useToolGetArgAsStringReturnAddress;
+    EconItem* (__thiscall* getSOCData)(void* itemView);
+    void(__thiscall* setCustomName)(EconItem* thisptr, const char* name);
+    SharedObjectTypeCache<EconItem>* (__thiscall* createBaseTypeCache)(ClientSharedObjectCache<EconItem>* thisptr, int classID);
+    void** uiComponentInventory;
+    void(__thiscall* setItemSessionPropertyValue)(void* thisptr, std::uint64_t itemID, const char* type, const char* value);
+    void(__thiscall* removeDynamicAttribute)(EconItem* thisptr, EconItemAttributeDefinition* attribute);
 
     short makePanoramaSymbol(const char* name) const noexcept
     {
@@ -107,16 +143,14 @@ public:
         return reinterpret_cast<bool(__stdcall*)(const char*, const char*)>(submitReportFunction)(xuid, report);
     }
 
-    void setOrAddAttributeValueByName(std::uintptr_t attributeList, const char* attribute, float value) const noexcept
+    void setDynamicAttributeValue(EconItem* thisptr, EconItemAttributeDefinition* attribute, void* value) const noexcept
     {
-        __asm movd xmm2, value
-        setOrAddAttributeValueByNameFunction(attributeList, attribute);
+        reinterpret_cast<void(__thiscall*)(EconItem*, EconItemAttributeDefinition*, void*)>(setDynamicAttributeValueFn)(thisptr, attribute, value);
     }
 
-    void setOrAddAttributeValueByName(std::uintptr_t attributeList, const char* attribute, int value) const noexcept
-    {
-        setOrAddAttributeValueByName(attributeList, attribute, *reinterpret_cast<float*>(&value) /* hack, but CSGO does that */);
-    }
+    class KeyValuesSystem* keyValuesSystem;
+    std::uintptr_t keyValuesAllocEngine;
+    std::uintptr_t keyValuesAllocClient;
 
     std::uintptr_t shouldDrawFogReturnAddress;
 
@@ -227,10 +261,10 @@ public:
     }
     //
 private:
-    void(__thiscall* setOrAddAttributeValueByNameFunction)(std::uintptr_t, const char* attribute);
     void(__thiscall* makePanoramaSymbolFn)(short* symbol, const char* name);
 
     std::uintptr_t submitReportFunction;
+    std::uintptr_t setDynamicAttributeValueFn;
     std::uintptr_t getGameModeNameFn;
 };
 

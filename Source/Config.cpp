@@ -19,6 +19,9 @@
 #include "Hacks/Glow.h"
 #include "Hacks/Sound.h"
 
+#include "InventoryChanger/InventoryChanger.h"
+#include "InventoryChanger/InventoryConfig.h"
+
 int CALLBACK fontCallback(const LOGFONTW* lpelfe, const TEXTMETRICW*, DWORD, LPARAM lParam)
 {
     const wchar_t* const fontName = reinterpret_cast<const ENUMLOGFONTEXW*>(lpelfe)->elfFullName;
@@ -755,6 +758,7 @@ void Config::load(const char8_t* name, bool incremental) noexcept
     read<value_t::object>(j, "ESP", streamProofESP);
     read<value_t::object>(j, "Visuals", visuals);
     ::Sound::fromJson(j["Sound"]);
+    fromJson(j["Inventory Changer"], inventory_changer::InventoryChanger::instance());
     read<value_t::object>(j, "Misc", misc);
 }
 
@@ -1460,6 +1464,7 @@ void Config::save(size_t id) const noexcept
         j["Chams"] = chams;
         j["ESP"] = streamProofESP;
         j["Sound"] = ::Sound::toJson();
+        j["Inventory Changer"] = toJson(inventory_changer::InventoryChanger::instance());
         j["Visuals"] = visuals;
         j["Misc"] = misc;
 
@@ -1507,6 +1512,7 @@ void Config::reset() noexcept
     chams = { };
     streamProofESP = { };
     visuals = { };
+    inventory_changer::InventoryChanger::instance().reset();
     Sound::resetConfig();
     misc = { };
 }

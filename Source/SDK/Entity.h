@@ -116,6 +116,7 @@ public:
 
     VIRTUAL_METHOD(void, release, 1, (), (this + sizeof(uintptr_t) * 2))
         VIRTUAL_METHOD(ClientClass*, getClientClass, 2, (), (this + sizeof(uintptr_t) * 2))
+        VIRTUAL_METHOD(void, onDataChanged, 5, (int updateType), (this + sizeof(uintptr_t) * 2, updateType))
         VIRTUAL_METHOD(void, preDataUpdate, 6, (int updateType), (this + sizeof(uintptr_t) * 2, updateType))
         VIRTUAL_METHOD(void, postDataUpdate, 7, (int updateType), (this + sizeof(uintptr_t) * 2, updateType))
         VIRTUAL_METHOD(bool, isDormant, 9, (), (this + sizeof(uintptr_t) * 2))
@@ -731,6 +732,7 @@ public:
     NETVAR(stamina, "CCSPlayer", "m_flStamina", float)
     NETVAR(thirdPersonRecoil, "CCSPlayer", "m_flThirdpersonRecoil", float)
     NETVAR(velocityModifier, "CCSPlayer", "m_flVelocityModifier", float)
+    NETVAR(playerPatchIndices, "CCSPlayer", "m_vecPlayerPatchEconIndices", int[5])
 
     NETVAR(viewModelIndex, "CBaseCombatWeapon", "m_iViewModelIndex", int)
     NETVAR(worldModelIndex, "CBaseCombatWeapon", "m_iWorldModelIndex", int)
@@ -751,9 +753,9 @@ public:
     NETVAR(zoomLevel, "CWeaponCSBaseGun", "m_zoomLevel", int)
 
     NETVAR(accountID, "CBaseAttributableItem", "m_iAccountID", int)
-    NETVAR(itemDefinitionIndex, "CBaseAttributableItem", "m_iItemDefinitionIndex", short)
-    NETVAR(itemDefinitionIndex2, "CBaseAttributableItem", "m_iItemDefinitionIndex", WeaponId)
-    NETVAR(itemIDHigh, "CBaseAttributableItem", "m_iItemIDHigh", int)
+    NETVAR(itemDefinitionIndex, "CBaseAttributableItem", "m_iItemDefinitionIndex", WeaponId)
+    NETVAR(itemIDHigh, "CBaseAttributableItem", "m_iItemIDHigh", std::uint32_t)
+    NETVAR(itemIDLow, "CBaseAttributableItem", "m_iItemIDLow", std::uint32_t)
     NETVAR(entityQuality, "CBaseAttributableItem", "m_iEntityQuality", int)
     NETVAR(customName, "CBaseAttributableItem", "m_szCustomName", char[32])
     NETVAR(fallbackPaintKit, "CBaseAttributableItem", "m_nFallbackPaintKit", unsigned)
@@ -761,6 +763,9 @@ public:
     NETVAR(fallbackWear, "CBaseAttributableItem", "m_flFallbackWear", float)
     NETVAR(fallbackStatTrak, "CBaseAttributableItem", "m_nFallbackStatTrak", unsigned)
     NETVAR(initialized, "CBaseAttributableItem", "m_bInitialized", bool)
+    NETVAR(econItemView, "CBaseAttributableItem", "m_Item", EconItemView)
+    NETVAR(originalOwnerXuidLow, "CBaseAttributableItem", "m_OriginalOwnerXuidLow", std::uint32_t)
+    NETVAR(originalOwnerXuidHigh, "CBaseAttributableItem", "m_OriginalOwnerXuidHigh", std::uint32_t)
 
     NETVAR(owner, "CBaseViewModel", "m_hOwner", int)
     NETVAR(weapon, "CBaseViewModel", "m_hWeapon", int)
@@ -796,6 +801,17 @@ public:
     {
         return flashOverlayAlpha() > 75.0f;
     }
+
+    std::uint64_t originalOwnerXuid() noexcept
+    {
+        return (std::uint64_t(originalOwnerXuidHigh()) << 32) | originalOwnerXuidLow();
+    }
+
+    std::uint64_t itemID() noexcept
+    {
+        return (std::uint64_t(itemIDHigh()) << 32) | itemIDLow();
+    }
+
 };
 
 class PlantedC4 : public Entity {

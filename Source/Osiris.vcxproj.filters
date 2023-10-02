@@ -42,6 +42,27 @@
     <Filter Include="InventoryChanger">
       <UniqueIdentifier>{af5c8cfd-1522-4cd0-ac9d-90acaead2a7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InventoryChanger\Inventory">
+      <UniqueIdentifier>{d96d29f0-5a53-44b3-b88a-837fffb03d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\Backend">
+      <UniqueIdentifier>{d9ae0863-57bb-440d-ad0c-e2b3951adade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\Backend\Response">
+      <UniqueIdentifier>{5dbfd47a-e192-4f4a-b43f-1cd8ef53c8a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\Backend\Request">
+      <UniqueIdentifier>{208d14a8-d2f7-4c42-9820-f73abf632d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\GameItems">
+      <UniqueIdentifier>{d7fa6529-c2b6-4489-aa67-99b9dfa75662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\GameIntegration">
+      <UniqueIdentifier>{38d3d632-9b81-45af-b034-3b1fb71c8d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InventoryChanger\ItemGenerator">
+      <UniqueIdentifier>{91afc1ff-7a48-475c-bff3-78ae9f5da3ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI.cpp">
@@ -280,6 +301,39 @@
     </ClCompile>
     <ClCompile Include="InventoryChanger\InventoryChanger.cpp">
       <Filter>InventoryChanger</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\InventoryConfig.cpp">
+      <Filter>InventoryChanger</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\WeaponNames.cpp">
+      <Filter>InventoryChanger</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\Inventory\StructsFromJson.cpp">
+      <Filter>InventoryChanger\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\EconItemView.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\Backend\Request\RequestHandler.cpp">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\GameItems\Storage.cpp">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\GameIntegration\CrateLoot.cpp">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\GameIntegration\Inventory.cpp">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\GameIntegration\Items.cpp">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\ItemGenerator\ItemGenerator.cpp">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryChanger\ItemGenerator\TournamentMatches.cpp">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -714,6 +768,174 @@
     </ClInclude>
     <ClInclude Include="SDK\UtlString.h">
       <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\InventoryConfig.h">
+      <Filter>InventoryChanger</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonForward.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\EconRarities.h">
+      <Filter>InventoryChanger</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\WeaponNames.h">
+      <Filter>InventoryChanger</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Inventory\Item.h">
+      <Filter>InventoryChanger\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallVariant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Inventory\Structs.h">
+      <Filter>InventoryChanger\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Constants\ProPlayer.h">
+      <Filter>SDK\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Constants\Tournament.h">
+      <Filter>SDK\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\Constants\TournamentTeam.h">
+      <Filter>SDK\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Inventory\StructsFromJson.h">
+      <Filter>InventoryChanger\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\BackendSimulator.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Item.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\ItemIDMap.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Items.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Loadout.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="SortFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\PickEm.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\StorageUnitManager.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\XRayScanner.h">
+      <Filter>InventoryChanger\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\Response.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\EconItemView.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\ItemInResponse.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseTypes.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseQueue.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseHandler.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Response\ResponseAccumulator.h">
+      <Filter>InventoryChanger\Backend\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\InventoryHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemActivationHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemRemovalHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\LoadoutHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\ItemModificationHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\PickEmHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestBuilder.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\RequestTypes.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\StorageUnitHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\Backend\Request\XRayScannerHandler.h">
+      <Filter>InventoryChanger\Backend\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\CrateLoot.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\CrateLootLookup.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\Enums.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\Item.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\ItemSorter.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\Lookup.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\Storage.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameItems\Structs.h">
+      <Filter>InventoryChanger\GameItems</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameIntegration\CrateLoot.h">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameIntegration\Inventory.h">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameIntegration\Items.h">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\GameIntegration\Misc.h">
+      <Filter>InventoryChanger\GameIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\AttributeGenerator.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\DefaultGenerator.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\DropGenerator.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\ItemGenerator.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\TournamentMatches.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryChanger\ItemGenerator\Utils.h">
+      <Filter>InventoryChanger\ItemGenerator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -161,6 +161,7 @@ static HRESULT __stdcall present(IDirect3DDevice9* device, const RECT* src, cons
     }
 
     GameData::clearUnusedAvatars();
+    InventoryChanger::clearUnusedItemIconTextures();
 
     return hooks->originalPresent(device, src, dest, windowOverride, dirtyRegion);
 }
@@ -168,7 +169,7 @@ static HRESULT __stdcall present(IDirect3DDevice9* device, const RECT* src, cons
 static HRESULT __stdcall reset(IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* params) noexcept
 {
     ImGui_ImplDX9_InvalidateDeviceObjects();
-    SkinChanger::clearItemIconTextures();
+    InventoryChanger::clearItemIconTextures();
     GameData::clearTextures();
     return hooks->originalReset(device, params);
 }
@@ -570,11 +571,12 @@ static void __stdcall frameStageNotify(FrameStage stage) noexcept
         Visuals::disablePostProcessing(stage);
         Visuals::removeVisualRecoil(stage);
         Visuals::applyZoom(stage);
-        SkinChanger::run(stage);
         Misc::fixAnimationLOD(stage);
         Animations::renderStart(stage);
         Animations::handlePlayers(stage);
     }
+    InventoryChanger::run(stage);
+
     hooks->client.callOriginal<void, 37>(stage);
     if (interfaces->engine->isInGame())
         EnginePrediction::apply(stage);
@@ -756,6 +758,48 @@ static void __stdcall renderSmokeOverlay(bool update) noexcept
         *reinterpret_cast<float*>(std::uintptr_t(memory->viewRender) + 0x588) = 0.0f;
     else
         hooks->viewRender.callOriginal<void, 41>(update);
+}
+
+static double __stdcall getArgAsNumber(void* params, int index) noexcept
+{
+    const auto result = hooks->panoramaMarshallHelper.callOriginal<double, 5>(params, index);
+    inventory_changer::InventoryChanger::instance().getArgAsNumberHook(static_cast<int>(result), RETURN_ADDRESS());
+    return result;
+}
+
+static const char* __stdcall getArgAsString(void* params, int index) noexcept
+{
+    const auto result = hooks->panoramaMarshallHelper.callOriginal<const char*, 7>(params, index);
+
+    if (result)
+        inventory_changer::InventoryChanger::instance().getArgAsStringHook(result, RETURN_ADDRESS(), params);
+
+    return result;
+}
+
+static void __stdcall setResultInt(void* params, int result) noexcept
+{
+    result = inventory_changer::InventoryChanger::instance().setResultIntHook(RETURN_ADDRESS(), params, result);
+    hooks->panoramaMarshallHelper.callOriginal<void, WIN32_LINUX(14, 11)>(params, result);
+}
+
+static unsigned __stdcall getNumArgs(void* params) noexcept
+{
+    const auto result = hooks->panoramaMarshallHelper.callOriginal<unsigned, 1>(params);
+    inventory_changer::InventoryChanger::instance().getNumArgsHook(result, RETURN_ADDRESS(), params);
+    return result;
+}
+
+static void __stdcall updateInventoryEquippedState(CSPlayerInventory* inventory, std::uint64_t itemID, Team team, int slot, bool swap) noexcept
+{
+    inventory_changer::InventoryChanger::instance().onItemEquip(team, slot, itemID);
+    return hooks->inventoryManager.callOriginal<void, WIN32_LINUX(29, 30)>(inventory, itemID, team, slot, swap);
+}
+
+static void __stdcall soUpdated(SOID owner, SharedObject* object, int event) noexcept
+{
+    InventoryChanger::onSoUpdated(object);
+    hooks->inventory.callOriginal<void, 1>(owner, object, event);
 }
 
 static void __stdcall onJump(float stamina) noexcept
@@ -1496,7 +1540,7 @@ static void* __stdcall getClientModelRenderableHook() noexcept
     return nullptr;
 }
 
-static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, UserMessageType type, int argument, int secondArgument, void* data) noexcept
+static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, UserMessageType type, int argument, int secondArgument, const void* data) noexcept
 {
     static auto original = hooks->client.getOriginal<bool, 38>(type, argument, secondArgument, data);
 
@@ -1505,6 +1549,9 @@ static bool __fastcall dispatchUserMessage(void* thisPointer, void* edx, UserMes
         if (config->misc.adBlock && !(*(memory->gameRules))->isValveDS())
             return true;
     }
+
+    if (type == UserMessageType::TextMsg)
+        inventory_changer::InventoryChanger::instance().onUserTextMsg(data, secondArgument);
 
     else if (type == UserMessageType::VoteStart)
         Misc::onVoteStart(data, secondArgument);
@@ -1730,8 +1777,20 @@ void Hooks::install() noexcept
     gameMovement.hookAt(32, onJump);
     //gameMovement.hookAt(61, canUnduck);
 
+    inventory.init(memory->inventoryManager->getLocalInventory());
+    inventory.hookAt(1, &soUpdated);
+
+    inventoryManager.init(memory->inventoryManager);
+    inventoryManager.hookAt(WIN32_LINUX(29, 30), &updateInventoryEquippedState);
+
     modelRender.init(interfaces->modelRender);
     modelRender.hookAt(21, drawModelExecute);
+
+    panoramaMarshallHelper.init(memory->panoramaMarshallHelper);
+    panoramaMarshallHelper.hookAt(1, &getNumArgs);
+    panoramaMarshallHelper.hookAt(5, &getArgAsNumber);
+    panoramaMarshallHelper.hookAt(7, &getArgAsString);
+    panoramaMarshallHelper.hookAt(WIN32_LINUX(14, 11), &setResultInt);
 
     sound.init(interfaces->sound);
     sound.hookAt(5, emitSound);

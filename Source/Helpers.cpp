@@ -384,20 +384,6 @@ std::wstring Helpers::toWideString(const std::string& str) noexcept
     return upperCase;
 }
 
-std::wstring Helpers::toUpper(std::wstring str) noexcept
-{
-    std::transform(str.begin(), str.end(), str.begin(), [](wchar_t w) -> wchar_t {
-        if (w >= 0 && w <= 127) {
-            if (w >= 'a' && w <= 'z')
-                return w - ('a' - 'A');
-            return w;
-        }
-
-        return std::towupper(w);
-    });
-    return str;
-}
-
 bool Helpers::decodeVFONT(std::vector<char>& buffer) noexcept
 {
     constexpr std::string_view tag = "VFONT1";
